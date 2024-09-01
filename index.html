@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="Assets/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Homepage</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
+
+        body {
+            font-family: 'Padauk', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        /* Image link grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(100%, 1fr)); /* Responsive grid */
+            gap: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            justify-content: center;
+
+        }
+
+
+        .image-link {
+            display: block;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 16px; /* Rounded corners */
+        }
+
+        .image-link img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px; /* Apply rounded corners to the image itself */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 128, 128, 0.7); /* Teal overlay */
+            opacity: 0; /* Hide overlay by default */
+            transition: opacity 0.3s ease; /* Smooth transition */
+            z-index: 1;
+        }
+
+        .image-link:hover .overlay {
+            opacity: 1; /* Show overlay on hover */
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Padauk', sans-serif;
+            font-size: 72px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 2; /* Ensure text is on top of overlay */
+            pointer-events: none; /* Ensure text does not interfere with hover */
+        }
+        nav {
+            background-color: white;
+/*             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+ */            z-index: 1000; /* Ensure navbar is on top */
+
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: black;
+            
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav li:first-child {
+            margin-right: auto;
+        }
+        
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            z-index: 1001; /* Ensure navbar is on top */
+
+        }
+
+        .sidebar li {
+            width: 250px;
+        }
+
+        .sidebar a {
+            width: 250px;
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        .menu-button {
+            display: none;
+            margin-left: 10px;
+    
+        }
+
+        .dropdown {
+            height: 100%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: black;
+        }
+
+        
+
+
+        @media(max-width: 800px) {
+    .menu-button {
+        display: block;
+        margin-left: 10px; /* Adjust to align the hamburger icon to the left */
+        order: 1; /* Ensure the menu button appears first in the flex container */
+    }
+
+    .title {
+        margin-left: auto; /* Moves title to the right */
+        order: 2; /* Ensure the title appears after the menu button */
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between; /* Ensures space between the menu button and title */
+        align-items: center;
+        width: 100%;
+    }
+
+    .hideOnMobile {
+        display: none;
+    }
+    </style>
+</head>
+
+
+<body>
+    <nav>
+        
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+            <li><a href="https://noxrays.neocities.org/Europe">Europe</a></li>
+            <li><a href="https://noxrays.neocities.org/Japan">Japan</a></li>
+            <li><a href="https://noxrays.neocities.org/Experimental">Expermimental</a></li>
+            <li><a href="https://www.noxrays.pics/about">About</a></li>      
+
+        </ul>
+        <ul>
+            <li class="title"><a href="https://noxrays.neocities.org/">No Xrays</a></li>
+            <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+            <li class="hideOnMobile"><div class="dropdown"><a href="#">Projects</a>
+                <div class="dropdown-content">
+                    <a href="https://noxrays.neocities.org/Europe">Europe</a>
+                    <a href="https://noxrays.neocities.org/Japan">Japan</a>
+                    <a href="https://noxrays.neocities.org/Experimental">Experimental</a>
+                </div>
+                </div>
+            <li class="hideOnMobile"><a href="https://www.noxrays.pics/about">About</a></li>
+        </ul>
+    </nav>
+
+        
+    <script>
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
+            sidebar.style.width = '250px'; /* Ensure width remains fixed */
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }</script>
+        
+
+
+    <!-- Main Content Area -->
+    <div class="content-container">
+      <div class="image-grid">
+          <!-- Example Image Link (Add more as needed) -->
+          <a href="https://noxrays.neocities.org/Europe" class="image-link">
+              <img src="https://www.dropbox.com/scl/fi/zu7pwaisjnorofbic6wl0/Europe_Button.jpg?rlkey=b2unj4b4rp9b7cjpz63m16k1i&st=k1m75aq8&raw=1" alt="Europe">
+              <div class="overlay"></div>
+          </a>
+  
+          <a href="https://noxrays.neocities.org/Japan" class="image-link">
+              <img src="https://www.dropbox.com/scl/fi/fc1fnp46zvmkspk71556h/Japan.jpg?rlkey=lxe2tpbtj8xv54pwptxunwu4o&st=5abi7wn9&raw=1" alt="Japan">
+              <div class="overlay"></div>
+          </a>
+  
+          <a href="https://noxrays.neocities.org/Experimental" class="image-link">
+              <img src="https://www.dropbox.com/scl/fi/5d97qqph5362eq89x1ozn/Experimental.jpg?rlkey=00je48jjucfz00kr97tjqpib6&st=8x8zsgik&raw=1" alt="Experimental">
+              <div class="overlay"></div>
+          </a>
+  
+          <!-- Add more image links for "Japan" and "Experimental" as needed -->
+      </div>
+    </div>
+
+</body>
+</html>
