@@ -94,7 +94,7 @@
 }
     </style>
 
-    <script defer>
+    <script>
         function showSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
@@ -106,7 +106,7 @@
             sidebar.style.display = 'none';
         }
         
-        function loadExternalHtml() {
+        async function loadExternalHtml() {
     fetch('navbar.html')  // Path to your external HTML file
         .then(response => {
             if (!response.ok) {
@@ -124,21 +124,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadExternalHtml();
         });
-
-        function loadExternalHtml() {
-            fetch('navbar.html')  // Path to your external HTML file
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('navbar').innerHTML = data; // Insert external HTML content into the navbar div
-                })
-                .catch(error => {
-                    console.error('Error fetching the external HTML:', error);
-                });
 }
 
 
