@@ -77,140 +77,8 @@
             z-index: 2; /* Ensure text is on top of overlay */
             pointer-events: none; /* Ensure text does not interfere with hover */
         }
-        nav {
-            background-color: white;
-/*             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
- */            z-index: 1000; /* Ensure navbar is on top */
 
-        }
-
-        nav ul {
-            width: 100%;
-            list-style: none;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav li {
-            height: 50px;
-        }
-
-        nav a {
-            height: 100%;
-            padding: 0 30px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            color: black;
-            
-        }
-
-        nav a:hover {
-            background-color: #f0f0f0;
-        }
-
-        nav li:first-child {
-            margin-right: auto;
-        }
-        
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 250px;
-            background-color: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(12px);
-            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-            list-style: none;
-            display: none;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            z-index: 1001; /* Ensure navbar is on top */
-
-        }
-
-        .sidebar li {
-            width: 250px;
-        }
-
-        .sidebar a {
-            width: 250px;
-            overflow: hidden; /* Prevent overflow */
-        }
-
-        .menu-button {
-            display: none;
-            margin-left: 10px;
-    
-        }
-
-        .dropdown {
-            height: 100%;
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 2;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #ddd;
-            color: black;
-        }
-
-        
-
-
-        @media(max-width: 800px) {
-    .menu-button {
-        display: block;
-        margin-left: 10px; /* Adjust to align the hamburger icon to the left */
-        order: 1; /* Ensure the menu button appears first in the flex container */
-    }
-
-    .title {
-        margin-left: auto; /* Moves title to the right */
-        order: 2; /* Ensure the title appears after the menu button */
-    }
-
-    ul {
-        display: flex;
-        justify-content: space-between; /* Ensures space between the menu button and title */
-        align-items: center;
-        width: 100%;
-    }
-
-    .hideOnMobile {
-        display: none;
-    }
+        @media(max-width: 800px) 
 
      /* Image link grid */
      .image-grid {
@@ -228,30 +96,10 @@
 </head>
 
 
-<body>
-    <nav>       
-    <ul class="sidebar">
-        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-        <li><a href="https://www.noxrays.pics/Europe">Europe</a></li>
-        <li><a href="https://www.noxrays.pics/Japan">Japan</a></li>
-        <li><a href="https://www.noxrays.pics/Experimental">Expermimental</a></li>
-        <li><a href="https://www.noxrays.pics/About">About</a></li>      
+<body onload="loadExternalHtml()">
 
-    </ul>
-    <ul>
-        <li class="title"><a href="https://www.noxrays.pics/">No Xrays</a></li>
-        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
-        <li class="hideOnMobile"><div class="dropdown"><a href="#">Projects</a>
-            <div class="dropdown-content">
-                <a href="https://www.noxrays.pics/Europe">Europe</a>
-                <a href="https://www.noxrays.pics/Japan">Japan</a>
-                <a href="https://www.noxrays.pics/Experimental">Experimental</a>
-            </div>
-            </div>
-        <li class="hideOnMobile"><a href="https://www.noxrays.pics/About">About</a></li>
-    </ul>
-</nav>
 
+    <div id="navbar"></div>
         
     <script>
         function showSidebar() {
@@ -263,7 +111,26 @@
         function hideSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.style.display = 'none';
-        }</script>
+        }
+        
+        function loadExternalHtml() {
+    fetch('navbar.html')  // Path to your external HTML file
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data; // Insert external HTML content into the navbar div
+        })
+        .catch(error => {
+            console.error('Error fetching the external HTML:', error);
+        });
+}
+
+
+        </script>
         
 
 
