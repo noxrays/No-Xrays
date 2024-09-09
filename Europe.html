@@ -287,9 +287,20 @@
     .hideOnMobile {
         display: none;
     }
+
+    .horizontal-image-grid {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .vertical-image-grid {
+            grid-template-columns: repeat(1, 1fr);
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+
 }
 
-@media(max-width: 400px) {
+/* @media(max-width: 400px) {
     .sidebar {
         width: 100%;
     }
@@ -298,35 +309,37 @@
         padding: 16px;
         margin-top: 50px; /* Adjusted for navbar height */
     }
-}
+} */
 
     </style>
 </head>
 <body>
 
-    <nav>
         
+    <nav>       
         <ul class="sidebar">
             <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
             <li><a href="https://www.noxrays.pics/Europe">Europe</a></li>
             <li><a href="https://www.noxrays.pics/Japan">Japan</a></li>
             <li><a href="https://www.noxrays.pics/Experimental">Expermimental</a></li>
             <li><a href="https://www.noxrays.pics/About">About</a></li>      
-
+    
         </ul>
         <ul>
-            <li class="title"><a href="https://noxrays.neocities.org/">No Xrays</a></li>
+            <li class="title"><a href="https://www.noxrays.pics/">No Xrays</a></li>
             <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
             <li class="hideOnMobile"><div class="dropdown"><a href="#">Projects</a>
                 <div class="dropdown-content">
                     <a href="https://www.noxrays.pics/Europe">Europe</a>
-                    <a href="https://www.noxrays.pics/Japan">Japan</a>
+                    <a href="https://www.noxrays.pics/Japan>Japan</a>
                     <a href="https://www.noxrays.pics/Experimental">Experimental</a>
                 </div>
                 </div>
             <li class="hideOnMobile"><a href="https://www.noxrays.pics/About">About</a></li>
         </ul>
     </nav>
+    
+
 
     <div class="content-container">
         <div class="image-grid horizontal-image-grid" id="horizontal-image-grid">

@@ -162,7 +162,7 @@
             background-color: #f9f9f9;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            z-index: 2;
         }
 
         .dropdown-content a {
@@ -211,34 +211,46 @@
     .hideOnMobile {
         display: none;
     }
+
+     /* Image link grid */
+     .image-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(100%, 1fr)); /* Responsive grid */
+            gap: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            justify-content: center;
+
+        }
+}
     </style>
 </head>
 
 
 <body>
-    <nav>
-        
-        <ul class="sidebar">
-            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-            <li><a href="https://www.noxrays.pics/Europe">Europe</a></li>
-            <li><a href="https://www.noxrays.pics/Japan">Japan</a></li>
-            <li><a href="https://www.noxrays.pics/Experimental">Expermimental</a></li>
-            <li><a href="https://www.noxrays.pics/About">About</a></li>      
+    <nav>       
+    <ul class="sidebar">
+        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+        <li><a href="https://www.noxrays.pics/Europe">Europe</a></li>
+        <li><a href="https://www.noxrays.pics/Japan">Japan</a></li>
+        <li><a href="https://www.noxrays.pics/Experimental">Expermimental</a></li>
+        <li><a href="https://www.noxrays.pics/About">About</a></li>      
 
-        </ul>
-        <ul>
-            <li class="title"><a href="https://noxrays.neocities.org/">No Xrays</a></li>
-            <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
-            <li class="hideOnMobile"><div class="dropdown"><a href="#">Projects</a>
-                <div class="dropdown-content">
-                    <a href="https://www.noxrays.pics/Europe">Europe</a>
-                    <a href="https://www.noxrays.pics/Japan">Japan</a>
-                    <a href="https://www.noxrays.pics/Experimental">Experimental</a>
-                </div>
-                </div>
-            <li class="hideOnMobile"><a href="https://www.noxrays.pics/About">About</a></li>
-        </ul>
-    </nav>
+    </ul>
+    <ul>
+        <li class="title"><a href="https://www.noxrays.pics/">No Xrays</a></li>
+        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+        <li class="hideOnMobile"><div class="dropdown"><a href="#">Projects</a>
+            <div class="dropdown-content">
+                <a href="https://www.noxrays.pics/Europe">Europe</a>
+                <a href="https://www.noxrays.pics/Japan">Japan</a>
+                <a href="https://www.noxrays.pics/Experimental">Experimental</a>
+            </div>
+            </div>
+        <li class="hideOnMobile"><a href="https://www.noxrays.pics/About">About</a></li>
+    </ul>
+</nav>
 
         
     <script>
@@ -259,17 +271,17 @@
     <div class="content-container">
       <div class="image-grid">
           <!-- Example Image Link (Add more as needed) -->
-          <a href="https://noxrays.neocities.org/Europe" class="image-link">
+          <a href="https://www.noxrays.pics/Europe" class="image-link">
               <img src="https://www.dropbox.com/scl/fi/zu7pwaisjnorofbic6wl0/Europe_Button.jpg?rlkey=b2unj4b4rp9b7cjpz63m16k1i&st=k1m75aq8&raw=1" alt="Europe">
               <div class="overlay"></div>
           </a>
   
-          <a href="https://noxrays.neocities.org/Japan" class="image-link">
+          <a href="https://www.noxrays.pics/Japan" class="image-link">
               <img src="https://www.dropbox.com/scl/fi/fc1fnp46zvmkspk71556h/Japan.jpg?rlkey=lxe2tpbtj8xv54pwptxunwu4o&st=5abi7wn9&raw=1" alt="Japan">
               <div class="overlay"></div>
           </a>
   
-          <a href="https://noxrays.neocities.org/Experimental" class="image-link">
+          <a href="https://www.noxrays.pics/Experimental" class="image-link">
               <img src="https://www.dropbox.com/scl/fi/5d97qqph5362eq89x1ozn/Experimental.jpg?rlkey=00je48jjucfz00kr97tjqpib6&st=8x8zsgik&raw=1" alt="Experimental">
               <div class="overlay"></div>
           </a>
