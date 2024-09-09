@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
+
+        body {
+            font-family: 'Padauk', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the content */
+        .content-container {
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+            height: 100vh;
+        }
+
+        .left-container {
+            width: 450px;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-right: 20px;
+        }
+
+        .right-container {
+            width: 33.33%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .header {
+            font-family: 'Padauk', sans-serif;
+            color: teal;
+            font-size: x-large;
+        }
+
+        .about-body {
+            font-family: 'Padauk', sans-serif;
+            color: rgb(0, 0, 0);
+            font-size: large;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Ensures the image scales while maintaining aspect ratio */
+        }
+
+        /* Media query for mobile devices */
+        @media(max-width: 800px) {
+            .content-container {
+                flex-direction:column;
+                width: 80%;
+            }
+
+            .left-container, .right-container {
+                width: 100%;
+                padding: 0;
+            }
+
+            .right-container {
+                order: -1; /* Displays the right container on top */
+            }
+
+            img {
+
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+
+        /* Navbar styles from the provided code */
+        nav {
+            background-color: white;
+            z-index: 1000; /* Ensure navbar is on top */
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: black;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav li:first-child {
+            margin-right: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            z-index: 1001; /* Ensure navbar is on top */
+        }
+
+        .sidebar li {
+            width: 250px;
+        }
+
+        .sidebar a {
+            width: 250px;
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        .menu-button {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .dropdown {
+            height: 100%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: black;
+        }
+
+        @media(max-width: 800px) {
+            .menu-button {
+                display: block;
+                margin-left: 10px; /* Adjust to align the hamburger icon to the left */
+                order: 1; /* Ensure the menu button appears first in the flex container */
+            }
+
+            .title {
+                margin-left: auto; /* Moves title to the right */
+                order: 2; /* Ensure the title appears after the menu button */
+            }
+
+            ul {
+                display: flex;
+                justify-content: space-between; /* Ensures space between the menu button and title */
+                align-items: center;
+                width: 100%;
+            }
+
+            .hideOnMobile {
+                display: none;
+            }
+        }
+
+        @media(max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+
+            .content {
+                padding: 16px;
+                margin-top: 50px; /* Adjusted for navbar height */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <div class="content-container">
+        <div class="left-container">
+            <div class="header">
+                <h1>About Me</h1>
+            </div>
+            <div class="about-body"> 
+                <p>I take a lot of pictures; things that catch my eye, small moments I want to remember, and cute birds I see on the sidewalk. Most of the photos don't turn out very good, but the few that do will be posted here. This is primarily a collection of my 35mm film shots.</p>   
+                <h2>35mm Cameras:</h2>
+                <ul>
+                    <li>Olympus Infinity Twin</li>
+                    <li>Canon AE-1</li>
+                </ul>
+                <h2>Film:</h2>
+                <ul>
+                    <li>Portra 400</li>
+                </ul>
+                <h2>Imaging Editing Software:</h2>
+                <ul>
+                    <li>Adobe Lightroom</li>
+                </ul>
+                <h2>Developed at:</h2>
+                <ul>
+                    <li><a href="https://atxfilmlab.com/">Film Lab</a> & <a href="https://austincamera.com/">Austin Camera & Imaging</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="image">
+                <img src="https://www.dropbox.com/scl/fi/bqa0aleiliwoso02pqvlj/000011840001-2.jpg?rlkey=5ucfupn99za90v8ie5rq74vvc&st=ofewgsq2&raw=1">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSidebar() {
+            document.querySelector('.sidebar').style.display = 'flex';
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').style.display = 'none';
+        }
+
+        function loadExternalHtml() {
+            fetch('navbar.html')  // Path to your external HTML file
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('content').innerHTML = data; // Insert external HTML content into the div
+                })
+                .catch(error => {
+                    console.error('Error fetching the external HTML:', error);
+                });
+        }
+    </script>
+</body>
+</html>
