@@ -16,21 +16,23 @@
         }
 
         .content-container {
-            width: 80%;
+            width: 90vw;  /* Width scales with viewport width */
+            max-width: 100%;  /* Maximum width capped at 100% of the viewport */
             margin: 0 auto;
-            padding-top: 20px;
+            padding: 20px 0;
+            box-sizing: border-box;
         }
 
         /* Image link grid */
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(100%, 1fr)); /* Responsive grid */
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));  /* Responsive grid */
             gap: 15px;
             padding: 20px;
-            max-width: 600px;
+            max-width: 90vw;  /* Max width limited to viewport */
             margin: auto;
             justify-content: center;
-
+            box-sizing: border-box;  /* Ensures padding doesn't overflow */
         }
 
 
@@ -91,6 +93,21 @@
             justify-content: center;
 
         }
+    }
+
+        @media(max-width: 1200px) {
+
+        /* Image link grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(100%, 1fr)); /* Responsive grid */
+            gap: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            justify-content: center;
+
+   }
 }
     </style>
 
@@ -131,7 +148,7 @@
 </head>
 
 
-<body onload="loadExternalHtml()">
+<body>
 
 
     <div id="navbar"></div>
