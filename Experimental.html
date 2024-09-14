@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+
+    <script>
+        // Function to load external HTML content
+        function loadExternalHtml() {
+            fetch('navbar.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load content');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Call the function to load content before body
+        document.addEventListener('DOMContentLoaded', loadExternalHtml);
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
 
@@ -301,28 +324,7 @@
 <body>
 
 
- <nav>       
-    <ul class="sidebar">
-        <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-        <li><a href="https://www.noxrays.pics/Europe">Europe</a></li>
-        <li><a href="https://www.noxrays.pics/Japan">Japan</a></li>
-        <li><a href="https://www.noxrays.pics/Experimental">Expermimental</a></li>
-        <li><a href="https://www.noxrays.pics/About">About</a></li>      
-
-    </ul>
-    <ul>
-        <li class="title"><a href="https://www.noxrays.pics/">No Xrays</a></li>
-        <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
-        <li class="hideOnMobile"><div class="dropdown"><a href="#">Projects</a>
-            <div class="dropdown-content">
-                <a href="https://www.noxrays.pics/Europe">Europe</a>
-                <a href="https://www.noxrays.pics/Japan">Japan</a>
-                <a href="https://www.noxrays.pics/Experimental">Experimental</a>
-            </div>
-            </div>
-        <li class="hideOnMobile"><a href="https://www.noxrays.pics/About">About</a></li>
-    </ul>
-</nav>
+    <div id="navbar"></div>    
 
 
     <div class="content-container">
