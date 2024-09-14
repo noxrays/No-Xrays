@@ -34,27 +34,7 @@
     <!-- Images will be added here by the script -->
 </div>
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <img id="modalImg" src="" alt="Modal Image" onclick="navigateImage(1)">
-        <div class="dots" id="dots-container"></div>
-        <span class="arrow arrow-left" onclick="navigateImage(-1)">&#10094;</span>
-        <span class="arrow arrow-right" onclick="navigateImage(1)">&#10095;</span>
-    </div>
-</div>
-
 <script>
-            function showSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
-        sidebar.style.width = '250px'; /* Ensure width remains fixed */
-    }
-
-    function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.style.display = 'none';
-    }
 
     let currentImageIndex = 0;
     const imageUrls = [
@@ -95,75 +75,6 @@
 
         } catch (error) {
             console.error('Failed to load one or more images:', error);
-        }
-    }
-
-    function openModal(imageUrl) {
-        const modal = document.getElementById('myModal');
-        const modalImg = document.getElementById('modalImg');
-
-        modalImg.src = imageUrl;
-        modalImg.onload = () => {
-            adjustImageSize(modalImg);
-        };
-
-        modal.style.display = 'block';
-        currentImageIndex = imageUrls.indexOf(imageUrl);
-        document.addEventListener('keydown', handleKeyPress);
-        updateDots();
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('myModal');
-        modal.style.display = 'none';
-        document.removeEventListener('keydown', handleKeyPress);
-    }
-
-    function handleKeyPress(event) {
-        if (event.key === 'Escape') {
-            closeModal();
-        } else if (event.key === 'ArrowLeft') {
-            navigateImage(-1);
-        } else if (event.key === 'ArrowRight') {
-            navigateImage(1);
-        }
-    }
-
-    function navigateImage(direction) {
-        currentImageIndex += direction;
-        if (currentImageIndex < 0) {
-            currentImageIndex = imageUrls.length - 1;
-        } else if (currentImageIndex >= imageUrls.length) {
-            currentImageIndex = 0;
-        }
-        const modalImg = document.getElementById('modalImg');
-        modalImg.src = imageUrls[currentImageIndex];
-        modalImg.onload = () => {
-            adjustImageSize(modalImg);
-        };
-        updateDots();
-    }
-
-    function updateDots() {
-        const dotsContainer = document.getElementById('dots-container');
-        dotsContainer.innerHTML = '';
-
-        for (let i = 0; i < imageUrls.length; i++) {
-            const dot = document.createElement('span');
-            dot.className = 'dot';
-            if (i === currentImageIndex) {
-                dot.classList.add('active');
-            }
-            dot.onclick = function () {
-                currentImageIndex = i;
-                const modalImg = document.getElementById('modalImg');
-                modalImg.src = imageUrls[currentImageIndex];
-                modalImg.onload = () => {
-                    adjustImageSize(modalImg);
-                };
-                updateDots();
-            };
-            dotsContainer.appendChild(dot);
         }
     }
 
