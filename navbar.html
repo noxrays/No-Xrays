@@ -102,6 +102,13 @@ nav {
             background-color: #ddd;
             color: black;
         }
+        
+        .title {
+        font-size: large;
+        font-weight: normal; /* If you want it to look like a normal link */
+        display: flex;
+        align-items: center;
+        }
 
         @media(max-width: 800px) {
             .menu-button {
@@ -111,8 +118,12 @@ nav {
             }
 
             .title {
-                margin-left: auto; /* Moves title to the right */
-                order: 2; /* Ensure the title appears after the menu button */
+            margin-left: auto; /* Moves title to the right */
+            font-size: large;
+            font-weight: normal; /* If you want it to look like a normal link */
+            display: flex;
+            margin-top: 20px;
+            margin-left: 20px;
             }
 
             ul {
@@ -135,6 +146,14 @@ nav {
             .content {
                 padding: 16px;
                 margin-top: 50px; /* Adjusted for navbar height */
+            }
+
+            .title {
+            margin-left: auto; /* Moves title to the right */
+            font-size: large;
+            font-weight: normal; /* If you want it to look like a normal link */
+            display: flex;
+            margin-top: 20px;
             }
         }
 </style>
