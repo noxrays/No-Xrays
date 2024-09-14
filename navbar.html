@@ -1,6 +1,6 @@
 <style>
 
-nav {
+        nav {
             background-color: white;
 /*             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
  */            z-index: 1000; /* Ensure navbar is on top */
@@ -138,6 +138,21 @@ nav {
         
 
 </style>
+
+<script>
+
+function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
+            sidebar.style.width = '250px'; /* Ensure width remains fixed */
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+        
+</script>
 
 <nav>       
     <ul class="sidebar">
