@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="modal.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
+
+
+        /* Container for the content */
+        .content-container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+               
+
+        body {
+            min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Padauk', sans-serif;
+        }
+
+
+   </style>
+</head>
+<body>
+
+    <script>function loadContent(file, elementId) {
+        fetch(file)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load content');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    
+    // Load navbar, main content, and footer
+    document.addEventListener('DOMContentLoaded', () => {
+        loadContent('navbar.html', 'navbar');
+        loadContent('test.html', 'urban-decay');
+        loadContent('urban-decay.html', 'urban-decay');
+        loadContent('film-soup.html', 'film-soup');
+        loadContent('light-leaks.html', 'light-leaks');
+    });</script>
+
+<script src="modal.js"></script>
+
+
+    <div id="navbar"></div>       
+
+    <div class="content-container" id="main-content">
+        <div id="urban-decay"></div>
+        <div id="film-soup"></div>
+        <div id="light-leaks"></div>
+
+    </div>
+
+    
+    
+</body>
+</html>

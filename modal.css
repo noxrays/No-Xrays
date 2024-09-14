@@ -1,0 +1,79 @@
+.modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            position: relative;
+            margin-top: 2%;
+            text-align: center;
+        }
+
+        .modal img {
+            display: block;
+            margin: auto;
+            padding: 2%; /* Adjusted padding to reduce the white border */
+            background-color: white;
+            border-radius: 8px;
+            cursor: pointer; /* Add cursor pointer to indicate click-to-advance */
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.6s ease;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+
+        .close-btn, .arrow {
+            position: absolute;
+            top: 50%;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+
+        .close-btn {
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            transform: none;
+        }
+
+        .arrow {
+            font-size: 40px;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+               /* Navbar styles from the provided code */
+
+               * {
+            margin: 0;
+            padding: 0;
+        }
