@@ -2,7 +2,9 @@
 
 nav {
             background-color: white;
-            z-index: 1000; /* Ensure navbar is on top */
+/*             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+ */            z-index: 1000; /* Ensure navbar is on top */
+
         }
 
         nav ul {
@@ -26,6 +28,7 @@ nav {
             display: flex;
             align-items: center;
             color: black;
+            
         }
 
         nav a:hover {
@@ -35,6 +38,7 @@ nav {
         nav li:first-child {
             margin-right: auto;
         }
+        
 
         .sidebar {
             position: fixed;
@@ -51,6 +55,7 @@ nav {
             align-items: flex-start;
             justify-content: flex-start;
             z-index: 1001; /* Ensure navbar is on top */
+
         }
 
         .sidebar li {
@@ -65,6 +70,7 @@ nav {
         .menu-button {
             display: none;
             margin-left: 10px;
+    
         }
 
         .dropdown {
@@ -79,7 +85,7 @@ nav {
             background-color: #f9f9f9;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 2;
+            z-index: 1;
         }
 
         .dropdown-content a {
@@ -102,56 +108,32 @@ nav {
             background-color: #ddd;
             color: black;
         }
+
         
-        .title {
-        font-size: large;
-        font-weight: normal; /* If you want it to look like a normal link */
-        display: flex;
-        align-items: center;
-        }
+
 
         @media(max-width: 800px) {
-            .menu-button {
-                display: block;
-                margin-left: 10px; /* Adjust to align the hamburger icon to the left */
-                order: 1; /* Ensure the menu button appears first in the flex container */
-            }
+    .menu-button {
+        display: block;
+        margin-left: 10px; /* Adjust to align the hamburger icon to the left */
+        order: 1; /* Ensure the menu button appears first in the flex container */
+    }
 
-            .title {
-            margin-left: auto; /* Moves title to the right */
-            font-size: large;
-            font-weight: normal; /* If you want it to look like a normal link */
-            display: flex;
-            order: 2;
-            }
+    .title {
+        margin-left: auto; /* Moves title to the right */
+        order: 2; /* Ensure the title appears after the menu button */
+    }
 
-            ul {
-                display: flex;
-                justify-content: space-between; /* Ensures space between the menu button and title */
-                align-items: center;
-                width: 100%;
-            }
+    ul {
+        display: flex;
+        justify-content: space-between; /* Ensures space between the menu button and title */
+        align-items: center;
+        width: 100%;
+    }
 
-            .hideOnMobile {
-                display: none;
-            }
-
-            .sidebar {
-                width: 100%;
-            }
-
-            .content {
-                padding: 16px;
-                margin-top: 50px; /* Adjusted for navbar height */
-            }
-
-            .title {
-            margin-left: auto; /* Moves title to the right */
-            font-size: large;
-            font-weight: normal; /* If you want it to look like a normal link */
-            display: flex;
-            order: 2;
-            }
+    .hideOnMobile {
+        display: none;
+    }
         }
         
 
