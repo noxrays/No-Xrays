@@ -1,0 +1,120 @@
+        .light-leaks-image-grid{
+            display: grid;
+            margin-top: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .lightLeaksimage-item {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+/*         .light-leaks-horizontal-image-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .light-leaks-vertical-image-grid {
+            grid-template-columns: repeat(3, 1fr);
+            margin: 15px 0 30px;
+        } */
+
+        .lightLeaksimage-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .lightLeaksmodal {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%; 
+            height: calc(100%); /* Extending 10% outside the image grid */
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        .lightLeaksmodal-content {
+            position: relative;
+            margin: 0 auto;
+            max-width: 85%;
+            padding: 5%; /* Adding 5% padding inside the lightLeaksmodal */
+            overflow: hidden; /* Ensure no overflow within the lightLeaksmodal content */
+        }
+
+        .lightLeaksmodal img {
+            display: block;
+            max-width: 100%;
+            max-height: 70vh; /* Constrain image height to viewport height */
+            margin: auto;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5%; /* Adding border by using padding */
+            border: 2px solid white; /* White border around the image */
+            object-fit: contain; /* Ensure the image is fully contained */
+        }
+
+        .lightLeaksdots {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .lightLeaksdot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.6s ease;
+        }
+
+        .lightLeaksdot.active {
+            background-color: #717171;
+        }
+
+        .close-btn, .arrow {
+            position: absolute;
+            top: 50%;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+
+        .close-btn {
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            transform: none;
+        }
+
+        .arrow {
+            font-size: 40px;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
