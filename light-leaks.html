@@ -1,23 +1,16 @@
-  
-<link rel="stylesheet" href="light-leaks.css">
-
-<div class="light-leaks-image-grid" id="light-leaks-image-grid">
-    <div id="light-leaks-horizontal-image-grid" class="light-leaks-image-grid light-leaks-horizontal-image-grid">
-        <!-- Horizontal images dynamically added here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="light-leaks.css">
+    <title>Light Leaks</title>
+</head>
+<body>
+    <div class="light-leaks-single-grid" id="light-leaks-single-grid">
+        <!-- Images will be added here dynamically -->
     </div>
-    <div id="light-leaks-vertical-image-grid" class="light-leaks-image-grid light-leaks-vertical-image-grid">
-        <!-- Vertical images dynamically added here -->
-    </div>
-</div>
 
-<div id="mylightLeaksModal" class="lightLeaksmodal">
-    <div class="lightLeaksmodal-content">
-        <span class="close-btn" onclick="closelightLeaksModal()">&times;</span>
-        <img id="lightLeaksmodalImg" src="" alt="lightLeaksModal Image" onclick="navigateImage(1)">
-        <div class="lightLeaksdots" id="lightLeaksdots-container"></div>
-        <span class="arrow arrow-left" onclick="navigateImage(-1)">&#10094;</span>
-        <span class="arrow arrow-right" onclick="navigateImage(1)">&#10095;</span>
-    </div>
-</div>
-
-<script src="light-leaks.js"></script>
+    <script src="light-leaks.js"></script>
+</body>
+</html>
