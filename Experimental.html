@@ -88,13 +88,13 @@
                 
                 loadContent('light-leaks.html', 'light-leaks').then(() => {
                 // 'gatherImages()' is called within 'urban-decay2.js' after images are loaded
-                console.log('Light Leaks content loaded.');
-            }).then(() => {
-                return loadContent('film-soup.html', 'film-soup');  // Fixed filename typo
-            }).then(() => {
+                console.log('Light Leaks content loaded.');});  
+
+            
+                loadContent('film-soup.html', 'film-soup').then(() => {
                 // 'gatherImages()' is called within 'film-soup.js' after images are loaded
-                console.log('Film Soup content loaded.');
-            });  // Updated log message to match the file being loaded
+                console.log('Film Soup content loaded.'); }); 
+
             }).catch(error => {
                 console.error('Error loading content:', error);
             });
