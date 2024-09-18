@@ -17,8 +17,7 @@
             background-repeat: no-repeat;
             background-position: center;
             font-family: 'Padauk', sans-serif;
-/*             overflow: hidden;
- */        }
+        }
     </style>
 </head>
 
@@ -81,26 +80,20 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadExternalHtml();
 
-            loadContent('urban-decay2.html', 'urban-decay').then(() => {
-                // 'gatherImages()' is called within 'urban-decay2.js' after images are loaded
-                console.log('Urban Decay content loaded.');
-
-                
-                loadContent('light-leaks.html', 'light-leaks').then(() => {
-                // 'gatherImages()' is called within 'urban-decay2.js' after images are loaded
-                console.log('Light Leaks content loaded.');});  
-
-            
-                loadContent('film-soup.html', 'film-soup').then(() => {
-                // 'gatherImages()' is called within 'film-soup.js' after images are loaded
-                console.log('Film Soup content loaded.'); }); 
-
-            }).catch(error => {
-                console.error('Error loading content:', error);
-            });
-});
-
+            loadContent('urban-decay2.html', 'urban-decay')
+                .then(() => {
+                    console.log('Urban Decay content loaded.');
+                    return loadContent('light-leaks.html', 'light-leaks');
+                })
+                .then(() => {
+                    console.log('Light Leaks content loaded.');
+                    return loadContent('film-soup.html', 'film-soup');
+                })
+                .then(() => {
+                    console.log('Film Soup content loaded.');
+                })
+                .catch(error => console.error('Error loading content:', error));
+        });
     </script>
-
 </body>
 </html>
