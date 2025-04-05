@@ -3,24 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to load external HTML content
+        function loadExternalHtml() {
+            fetch('navbar.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load content');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
 
-     
+        // Call the function to load content before body
+        document.addEventListener('DOMContentLoaded', loadExternalHtml);
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
+         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
 
         body {
             font-family: 'Padauk', sans-serif;
             margin: 0;
             padding: 0;
         }
+        /* Existing styles from your original code */
 
         .content-container {
             width: 80%;
             margin: 0 auto;
             padding-top: 20px;
         }
-        
+
         .image-grid {
             display: grid;
             gap: 15px;
@@ -32,10 +53,9 @@
         }
 
         .vertical-image-grid {
-            /* margin: 80%; */
             grid-template-columns: repeat(3, 1fr);
             margin-top: 15px;
-            margin-bottom: 30px; /* Adding space between the two grids */
+            margin-bottom: 30px;
         }
 
         .image-item {
@@ -49,11 +69,11 @@
         }
 
         .horizontal-image-item {
-            padding-top: 75%; /* 4:3 aspect ratio */
+            padding-top: 75%; 
         }
 
         .vertical-image-item {
-            padding-top: 133.33%; /* 3:4 aspect ratio */
+            padding-top: 133.33%; 
         }
 
         .image-item img {
@@ -62,7 +82,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* This will crop the image to fit the aspect ratio */
+            object-fit: cover;
             cursor: pointer;
         }
 
@@ -85,10 +105,10 @@
         .modal img {
             display: block;
             margin: auto;
-            padding: 2%; /* Adjusted padding to reduce the white border */
+            padding: 2%;
             background-color: white;
             border-radius: 8px;
-            cursor: pointer; /* Add cursor pointer to indicate click-to-advance */
+            cursor: pointer;
         }
 
         .dots {
@@ -139,9 +159,9 @@
             right: 10px;
         }
 
-               /* Navbar styles from the provided code */
+        /* Navbar styles from the provided code */
 
-               * {
+        * {
             margin: 0;
             padding: 0;
         }
@@ -241,7 +261,7 @@
             background-color: #f9f9f9;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 2;
+            z-index: 1;
         }
 
         .dropdown-content a {
@@ -296,42 +316,54 @@
         }
 
         .vertical-image-grid {
-            /* margin: 80%; */
             grid-template-columns: repeat(1, 1fr);
             margin-top: 15px;
-            margin-bottom: 30px; /* Adding space between the two grids */
+            margin-bottom: 30px;
         }
+
 }
 
-        
+/* @media(max-width: 400px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    .content {
+        padding: 16px;
+        margin-top: 50px; /* Adjusted for navbar height */
+    }
+} */
+
     </style>
 </head>
 <body>
 
-<div id="navbar"></div>
+        
+    <div id="navbar"></div>    
 
-<div class="content-container">
-    <div class="image-grid horizontal-image-grid" id="horizontal-image-grid">
-        <!-- Horizontal images will be added here by the script -->
+
+    <div class="content-container">
+        <div class="image-grid horizontal-image-grid" id="horizontal-image-grid">
+            <!-- Horizontal images will be added here by the script -->
+        </div>
+
+        <div class="image-grid vertical-image-grid" id="vertical-image-grid">
+            <!-- Vertical images will be added here by the script -->
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <img id="modalImg" src="" alt="Modal Image" onclick="navigateImage(1)">
+                <span class="arrow arrow-left" onclick="navigateImage(-1)">&#10094;</span>
+                <span class="arrow arrow-right" onclick="navigateImage(1)">&#10095;</span>
+            </div>
+            <div class="dots" id="dots-container"></div>
+        </div>
     </div>
 
-    <div class="image-grid vertical-image-grid" id="vertical-image-grid">
-        <!-- Vertical images will be added here by the script -->
-    </div>
-</div>
-
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <img id="modalImg" src="" alt="Modal Image" onclick="navigateImage(1)">
-        <span class="arrow arrow-left" onclick="navigateImage(-1)">&#10094;</span>
-        <span class="arrow arrow-right" onclick="navigateImage(1)">&#10095;</span>
-    </div>
-    <div class="dots" id="dots-container"></div>
-</div>
-
-<script>
-    function showSidebar() {
+    <script>
+        function showSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
             sidebar.style.width = '250px'; /* Ensure width remains fixed */
@@ -342,45 +374,24 @@
             sidebar.style.display = 'none';
         }
 
-        async function loadExternalHtml() {
-        fetch('navbar.html')  // Path to your external HTML file
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('navbar').innerHTML = data; // Insert external HTML content into the navbar div
-        })
-        .catch(error => {
-            console.error('Error fetching the external HTML:', error);
-        });
+        // Existing scripts from your original code
 
-        document.addEventListener('DOMContentLoaded', function() {
-            loadExternalHtml();
-        });
-    }
+        let currentImageIndex = 0;
+        const imageUrls = [
+        'https://www.dropbox.com/scl/fi/hpjud6gxw5s78xibaq2ax/Europe_35_Edited_noBorder2-000011840025.jpg?rlkey=786sa5cllb2d32p9ykfw7ce0o&st=ec2yy1ek&raw=1',
+        'https://www.dropbox.com/scl/fi/ushp01zu9o1fjuo6trhdl/Europe_35_Edited_noBorder2-000011840003.jpg?rlkey=owbzq6nc53of4hsvslxm6cr7x&st=p1hs718r&raw=1',
+        'https://www.dropbox.com/scl/fi/os0ep492dybfvygo3i3d6/Europe_35_Edited_noBorder2-000011840013.jpg?rlkey=mh5b0beq1vhc9carinxkpm0i5&st=a7fxr747&raw=1',
+        'https://www.dropbox.com/scl/fi/jdm1ebk4g5lh0owaly5k0/Europe_35_Edited_noBorder2-000011840015.jpg?rlkey=f2xsjei735f1grqdvc9d36vs6&st=3jujd8x3&raw=1',
+        'https://www.dropbox.com/scl/fi/6ugcahkz94gkf67m6wm97/Europe_35_Edited_noBorder2-000011830022.jpg?rlkey=uyfk1nfv0fx7g0wjszotvxvfs&st=gopj37el&raw=1',
+        'https://www.dropbox.com/scl/fi/s4lea3mmk47qrtp2luigj/Europe_35_Edited_noBorder2-000011830034.jpg?rlkey=2kri22cpkrrz5nwen7htoipiq&st=9jgvnd5d&raw=1',
+        'https://www.dropbox.com/scl/fi/qqp8y0xzt563md47wteob/Europe_35_Edited_noBorder2-000011840009.jpg?rlkey=qp7kh8qs901fwdc3zuviqqj24&st=gmtqvxqs&raw=1',
+		'https://www.dropbox.com/scl/fi/5n2t82nvhngr1t2z5xiv9/Europe_35_Edited_noBorder2.jpg?rlkey=v7xxq7mf1excfwd7jwfpp2ulm&st=4cf1j43e&raw=1',
+        'https://www.dropbox.com/scl/fi/1phlrq0tiwpr4rujc2d0d/Europe_35_Edited_noBorder2-3.jpg?rlkey=gwhr0fqwaguil4hygfar2v4on&st=xj4kv92p&raw=1',
+        'https://www.dropbox.com/scl/fi/x9jeuh7gqs87gbhh8qt3e/Europe_35_Edited_noBorder2-2.jpg?rlkey=ntaz78t0z9yl0c7qieim50p6f&st=hc580di4&raw=1',
+        'https://www.dropbox.com/scl/fi/2kuzp33zxzwil6p73ia0d/Europe_35_Edited_noBorder2-1.jpg?rlkey=a7ngu7aodlrzw2jmntim8dvvf&st=1de9ufwy&raw=1'
+        ];
 
-    let currentImageIndex = 0;
-    const imageUrls = [
-        'https://www.dropbox.com/scl/fi/2mc9jkrtfdwsqixyckbul/Europe_35_Edited_noBorder2-10.jpg?rlkey=z1rtdsq46dspjjqrub27o8fjz&st=cgcs3ccy&raw=1',
-        'https://www.dropbox.com/scl/fi/tqjhgogpfrlirbx48smmk/Europe_35_Edited_noBorder2-3.jpg?rlkey=qs5213bg5s7511w1a3f0ftb44&st=b5n2lgs0&raw=1',
-        'https://www.dropbox.com/scl/fi/0uuy46dth40hsnjmtv89w/Europe_35_Edited_noBorder2-2.jpg?rlkey=50m1vbt5ig3rarmo3uo9nx7qo&st=1rbxctu5&raw=1',
-        'https://www.dropbox.com/scl/fi/t19qyq2fqubhhlkjeocjm/Europe_35_Edited_noBorder2.jpg?rlkey=b35fgoog46uxsa99ovs2tsamv&st=knhzslx9&raw=1',
-        'https://www.dropbox.com/scl/fi/qa17iwjo1ompqdzsqgcag/Europe_35_Edited_noBorder2-6.jpg?rlkey=nyg9egw0r4v86uqdfsprn0vpu&st=zcfi5t7u&raw=1',
-        'https://www.dropbox.com/scl/fi/72tg6trfq4lw1g5gefbcw/Europe_35_Edited_noBorder2-5.jpg?rlkey=cld8jqcy0jikuoxwnehrtd3tg&st=dx8xcd53&raw=1',
-        'https://www.dropbox.com/scl/fi/1uj0ivrbcadyfyexe5bjv/Edited_noBorder2-2.jpg?rlkey=x1f43wpn9bf3nfvovgxchqu13&st=y6lrj5cg&raw=1',
-        'https://www.dropbox.com/scl/fi/6gdadgori6x6gk5yedofp/Japan_2048l_NoBorder-7.jpg?rlkey=np6zc64r9wlrnxgj906pih72u&st=tb5reclh&raw=1',
-        'https://www.dropbox.com/scl/fi/jd9xur6ze4kqb94e2p3b7/Japan_2048l_NoBorder-4.jpg?rlkey=o5owqejiwqeu4ahm37bjmfo7z&st=zn8n1n3t&raw=1',
-        'https://www.dropbox.com/scl/fi/ysc16yhud21aj9gcy4bzl/Japan_2048l_NoBorder-11.jpg?rlkey=5faanukdxg4o154mjldwbeewd&st=lq84iuak&raw=1',
-        'https://www.dropbox.com/scl/fi/7r9m4oe8reu6mu66lzj95/Japan_2048l_NoBorder-5.jpg?rlkey=k1kkmwie9745ods2iwf5nvoma&st=wf9uit0v&raw=1',
-        'https://www.dropbox.com/scl/fi/7y359dkioi75jy7vabdu9/Japan_2048l_NoBorder-3.jpg?rlkey=1a5bmmfkv7uyn2mac2ulcumpr&st=3bi5oo71&raw=1',
-        'https://www.dropbox.com/scl/fi/v8808ql2tr7ndjin2rjvb/Japan_2048l_NoBorder-6.jpg?rlkey=582ivcg2i48dzlolp0mux8l4j&st=u59dh8ix&raw=1',
-        'https://www.dropbox.com/scl/fi/w7r7huva1ial2qllpmqp3/Japan_2048l_NoBorder-9.jpg?rlkey=9u7it8slb33qast7g8otdxv4s&st=jgc3zbwz&raw=1'
-    ];
-
-    async function checkImageOrientation(url) {
+        async function checkImageOrientation(url) {
         return new Promise((resolve, reject) => {
             const img = new Image();
             img.src = url;
@@ -451,81 +462,81 @@
         }
     }
 
-    function openModal(imageUrl) {
-        const modalImg = document.getElementById('modalImg');
-        modalImg.src = imageUrl;
-        modalImg.onload = () => {
-            adjustImageSize(modalImg);
-        };
-        document.getElementById('myModal').style.display = 'block';
-        currentImageIndex = imageUrls.indexOf(imageUrl);
-        document.addEventListener('keydown', handleKeyPress);
-        document.addEventListener('click', handleClickOutside);
-        updateDots();
-    }
-
-    function closeModal() {
-        document.getElementById('myModal').style.display = 'none';
-        document.removeEventListener('keydown', handleKeyPress);
-        document.removeEventListener('click', handleClickOutside);
-    }
-
-    function handleKeyPress(event) {
-        if (event.key === 'Escape') {
-            closeModal();
-        } else if (event.key === 'ArrowLeft') {
-            navigateImage(-1);
-        } else if (event.key === 'ArrowRight') {
-            navigateImage(1);
-        }
-    }
-
-    function handleClickOutside(event) {
-        const modal = document.getElementById('myModal');
-        if (event.target === modal) {
-            closeModal();
-        }
-    }
-
-    function navigateImage(direction) {
-        currentImageIndex += direction;
-        if (currentImageIndex < 0) {
-            currentImageIndex = imageUrls.length - 1;
-        } else if (currentImageIndex >= imageUrls.length) {
-            currentImageIndex = 0;
-        }
-        const modalImg = document.getElementById('modalImg');
-        modalImg.src = imageUrls[currentImageIndex];
-        modalImg.onload = () => {
-            adjustImageSize(modalImg);
-        };
-        updateDots();
-    }
-
-    function updateDots() {
-        const dotsContainer = document.getElementById('dots-container');
-        dotsContainer.innerHTML = '';
-
-        for (let i = 0; i < imageUrls.length; i++) {
-            const dot = document.createElement('span');
-            dot.className = 'dot';
-            if (i === currentImageIndex) {
-                dot.classList.add('active');
-            }
-            dot.onclick = function () {
-                currentImageIndex = i;
-                const modalImg = document.getElementById('modalImg');
-                modalImg.src = imageUrls[currentImageIndex];
-                modalImg.onload = () => {
-                    adjustImageSize(modalImg);
-                };
-                updateDots();
+        function openModal(imageUrl) {
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = imageUrl;
+            modalImg.onload = () => {
+                adjustImageSize(modalImg);
             };
-            dotsContainer.appendChild(dot);
+            document.getElementById('myModal').style.display = 'block';
+            currentImageIndex = imageUrls.indexOf(imageUrl);
+            document.addEventListener('keydown', handleKeyPress);
+            document.addEventListener('click', handleClickOutside);
+            updateDots();
         }
-    }
 
-    function adjustImageSize(img) {
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+            document.removeEventListener('keydown', handleKeyPress);
+            document.removeEventListener('click', handleClickOutside);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            } else if (event.key === 'ArrowLeft') {
+                navigateImage(-1);
+            } else if (event.key === 'ArrowRight') {
+                navigateImage(1);
+            }
+        }
+
+        function handleClickOutside(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        function navigateImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = imageUrls.length - 1;
+            } else if (currentImageIndex >= imageUrls.length) {
+                currentImageIndex = 0;
+            }
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = imageUrls[currentImageIndex];
+            modalImg.onload = () => {
+                adjustImageSize(modalImg);
+            };
+            updateDots();
+        }
+
+        function updateDots() {
+            const dotsContainer = document.getElementById('dots-container');
+            dotsContainer.innerHTML = '';
+
+            for (let i = 0; i < imageUrls.length; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                if (i === currentImageIndex) {
+                    dot.classList.add('active');
+                }
+                dot.onclick = function () {
+                    currentImageIndex = i;
+                    const modalImg = document.getElementById('modalImg');
+                    modalImg.src = imageUrls[currentImageIndex];
+                    modalImg.onload = () => {
+                        adjustImageSize(modalImg);
+                    };
+                    updateDots();
+                };
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function adjustImageSize(img) {
         const maxWidth = window.innerWidth * 0.85; // Increased to 85% of the viewport width
         const maxHeight = window.innerHeight * 0.85; // Increased to 85% of the viewport height
         const widthRatio = maxWidth / img.naturalWidth;
@@ -535,7 +546,7 @@
         const isVertical = img.naturalHeight > img.naturalWidth;
 
         if (isVertical) {
-            scale = Math.min(widthRatio, heightRatio); // Scale vertical images to 55%
+            scale = Math.min(widthRatio, heightRatio ); // Scale vertical images to 55%
         } else {
             scale = Math.min(widthRatio, heightRatio);
         }
@@ -544,11 +555,8 @@
         img.style.height = img.naturalHeight * scale + 'px';
     }
 
-    // Call the function to create the image elements when the script loads
-    createImageElements();
-</script>
+        createImageElements();
+    </script>
 
 </body>
-
-
 </html>
