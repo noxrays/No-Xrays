@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Video Gallery</title>
+
+    <script>
+        // Function to load external HTML content (navbar)
+        function loadExternalHtml() {
+            fetch('navbar.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load content');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Load navbar on page load
+        document.addEventListener('DOMContentLoaded', loadExternalHtml);
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Padauk', sans-serif;
+            min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: white;
+            z-index: 1000;
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: black;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav li:first-child {
+            margin-right: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            z-index: 1001;
+        }
+
+        .sidebar li {
+            width: 250px;
+        }
+
+        .sidebar a {
+            width: 250px;
+            overflow: hidden;
+        }
+
+        .menu-button {
+            display: none;
+            margin-left: 10px;
+        }
+
+        /* Content styles */
+        .content-container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 20px;
+            width: 60%;
+            max-width: 1200px; /* Adjust as you did to fix visibility */
+        }
+
+        .video-item {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ffffff; /* Black background for video */
+        }
+
+        .video-item video {
+            width: 100%;
+            height: auto; /* Allow natural height */
+            object-fit: contain; /* Preserve aspect ratio without cropping */
+            border-radius: 8px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 800px) {
+            .menu-button {
+                display: block;
+                margin-left: 10px;
+                order: 1;
+            }
+
+            .title {
+                margin-left: auto;
+                order: 2;
+            }
+
+            ul {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .hideOnMobile {
+                display: none;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr; /* Stack videos on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <div class="content-container">
+        <div class="video-grid">
+            <div class="video-item">
+                <video src="https://www.dropbox.com/scl/fi/6x09az60sb7wwvwxze57p/0918_30fps_40percentslowed_music.mp4?rlkey=aftq11sz84b161oad07bm5pdh&st=vs5micvp&raw=1" muted preload="auto" autoplay></video>
+            </div>
+            <div class="video-item">
+                <video src="https://www.dropbox.com/scl/fi/0pmwjlb0envdyv7tapnll/1218-3.mp4?rlkey=wycbayrax2c2xs4pjfqagm7x2&st=g81b07sn&raw=1" muted preload="auto" autoplay></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Video control logic
+        const videos = document.querySelectorAll('.video-item video');
+
+        videos.forEach(video => {
+            video.loop = true; // Enable looping by default
+
+            video.addEventListener('click', () => {
+                if (video.paused) {
+                    // If paused, play and unmute this video
+                    video.play();
+                    video.muted = false;
+
+                    // Pause and mute all other videos
+                    videos.forEach(otherVideo => {
+                        if (otherVideo !== video) {
+                            otherVideo.pause();
+                            otherVideo.muted = true;
+                        }
+                    });
+                } else {
+                    // If playing, pause and mute this video
+                    video.pause();
+                    video.muted = true;
+                }
+            });
+        });
+
+        // Sidebar toggle functions
+        function showSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
+            sidebar.style.width = '250px';
+        }
+
+        function hideSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
