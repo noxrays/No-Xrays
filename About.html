@@ -42,41 +42,27 @@
             width: 80%;
             margin: 0 auto;
             padding-top: 20px;
-            min-height: 100vh; /* Use min-height instead of height for better responsiveness */
+            min-height: 100vh;
+            align-items: flex-start; /* Ensure both columns start from the top */
         }
 
-        .left-container {
-            width: 450px;
-            padding-top: 20px;
-            padding-right: 20px;
-        }
-
-        .right-container {
-            flex: 1; /* Take remaining space */
+        .left-column {
+            flex: 1;
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            padding-top: 20px;
+            justify-content: flex-end; /* Align image to the right */
+            padding: 70px 20px; /* Adjust padding to match right column */
+        }
+
+        .right-column {
+            flex: 1;
+            padding: 20px 0 20px 20px; /* Remove top padding to align with image */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align text to the left */
         }
 
         .image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 400px; /* Limit the image width for better proportionality */
-        }
-
-        .header {
-            font-family: 'Padauk', sans-serif;
-            color: teal;
-            font-size: x-large;
-        }
-
-        .about-body {
-            font-family: 'Padauk', sans-serif;
-            color: rgb(0, 0, 0);
-            font-size: large;
+            max-width: 500px; /* Limit the image width */
         }
 
         img {
@@ -85,21 +71,53 @@
             object-fit: contain; /* Ensures the image scales while maintaining aspect ratio */
         }
 
+        .header {
+            font-family: 'Padauk', sans-serif;
+            color: teal;
+            font-size: x-large;
+            margin: 0; /* Remove any default margin */
+        }
+
+        .about-body {
+            font-family: 'Padauk', sans-serif;
+            color: rgb(0, 0, 0);
+            font-size: large;
+        }
+
+        .about-body h2 {
+            margin-top: 20px;
+        }
+
+        .about-body ul {
+            margin: 10px 0;
+            padding-left: 20px;
+            list-style-position: outside;
+        }
+
+        .about-body li {
+            margin-bottom: 5px;
+        }
+
         /* Media query for mobile devices */
-        @media(max-width: 800px) {
+        @media (max-width: 800px) {
             .content-container {
                 flex-direction: column;
                 width: 80%;
             }
 
-            .left-container, .right-container {
+            .left-column, .right-column {
                 width: 100%;
                 padding: 0;
             }
 
-            .right-container {
-                order: -1; /* Displays the right container on top */
-                margin-bottom: 20px; /* Add some space between image and text on mobile */
+            .left-column {
+                justify-content: center; /* Center image on mobile */
+                margin-bottom: 20px; /* Add space between image and text */
+            }
+
+            .right-column {
+                align-items: flex-start; /* Keep text aligned left */
+                padding: 0 20px; /* Add padding on mobile for better spacing */
             }
 
             .image {
@@ -111,9 +129,22 @@
                 height: auto;
                 object-fit: contain;
             }
+
+            /* Ensure lists display on their own lines */
+            .about-body ul {
+                display: block; /* Ensure block display to prevent inline overlap */
+                width: 100%;
+                padding-left: 20px;
+                margin: 10px 0;
+            }
+
+            .about-body li {
+                display: block; /* Ensure each list item takes its own line */
+                width: 100%;
+            }
         }
 
-        /* Navbar styles from the provided code */
+        /* Navbar styles */
         nav {
             background-color: white;
             z-index: 1000;
@@ -257,7 +288,12 @@
     <div id="navbar"></div>
 
     <div class="content-container">
-        <div class="left-container">
+        <div class="left-column">
+            <div class="image">
+                <img src="https://www.dropbox.com/scl/fi/bqa0aleiliwoso02pqvlj/000011840001-2.jpg?rlkey=5ucfupn99za90v8ie5rq74vvc&st=ofewgsq2&raw=1">
+            </div>
+        </div>
+        <div class="right-column">
             <div class="header">
                 <h1>About Me</h1>
             </div>
@@ -283,11 +319,6 @@
                 <ul>
                     <li><a href="https://atxfilmlab.com/">ATX Film Lab</a> & <a href="https://austincamera.com/">Austin Camera & Imaging</a></li>
                 </ul>
-            </div>
-        </div>
-        <div class="right-container">
-            <div class="image">
-                <img src="https://www.dropbox.com/scl/fi/bqa0aleiliwoso02pqvlj/000011840001-2.jpg?rlkey=5ucfupn99za90v8ie5rq74vvc&st=ofewgsq2&raw=1">
             </div>
         </div>
     </div>
