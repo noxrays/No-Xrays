@@ -27,7 +27,6 @@
         document.addEventListener('DOMContentLoaded', loadExternalHtml);
     </script>
 
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
 
@@ -43,23 +42,29 @@
             width: 80%;
             margin: 0 auto;
             padding-top: 20px;
-            height: 100vh;
+            min-height: 100vh; /* Use min-height instead of height for better responsiveness */
         }
 
         .left-container {
             width: 450px;
-            margin: 0 auto;
             padding-top: 20px;
             padding-right: 20px;
         }
 
         .right-container {
-          display: flex;
-          justify-content: center;
-          margin-top: 20%;
-            width: 33.33%;
-            margin: 0 auto;
+            flex: 1; /* Take remaining space */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
             padding-top: 20px;
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 400px; /* Limit the image width for better proportionality */
         }
 
         .header {
@@ -75,9 +80,6 @@
         }
 
         img {
-            display: flex;
-            justify-content: center;  /* Ensures image is centered within its container */
-            align-items: center;
             max-width: 100%;
             max-height: 100%;
             object-fit: contain; /* Ensures the image scales while maintaining aspect ratio */
@@ -86,7 +88,7 @@
         /* Media query for mobile devices */
         @media(max-width: 800px) {
             .content-container {
-                flex-direction:column;
+                flex-direction: column;
                 width: 80%;
             }
 
@@ -97,10 +99,14 @@
 
             .right-container {
                 order: -1; /* Displays the right container on top */
+                margin-bottom: 20px; /* Add some space between image and text on mobile */
+            }
+
+            .image {
+                max-width: 100%; /* Ensure the image takes full width on mobile */
             }
 
             img {
-
                 width: 100%;
                 height: auto;
                 object-fit: contain;
@@ -110,7 +116,7 @@
         /* Navbar styles from the provided code */
         nav {
             background-color: white;
-            z-index: 1000; /* Ensure navbar is on top */
+            z-index: 1000;
         }
 
         nav ul {
@@ -158,7 +164,7 @@
             flex-direction: column;
             align-items: flex-start;
             justify-content: flex-start;
-            z-index: 1001; /* Ensure navbar is on top */
+            z-index: 1001;
         }
 
         .sidebar li {
@@ -167,7 +173,7 @@
 
         .sidebar a {
             width: 250px;
-            overflow: hidden; /* Prevent overflow */
+            overflow: hidden;
         }
 
         .menu-button {
@@ -214,18 +220,18 @@
         @media(max-width: 800px) {
             .menu-button {
                 display: block;
-                margin-left: 10px; /* Adjust to align the hamburger icon to the left */
-                order: 1; /* Ensure the menu button appears first in the flex container */
+                margin-left: 10px;
+                order: 1;
             }
 
             .title {
-                margin-left: auto; /* Moves title to the right */
-                order: 2; /* Ensure the title appears after the menu button */
+                margin-left: auto;
+                order: 2;
             }
 
             ul {
                 display: flex;
-                justify-content: space-between; /* Ensures space between the menu button and title */
+                justify-content: space-between;
                 align-items: center;
                 width: 100%;
             }
@@ -242,14 +248,13 @@
 
             .content {
                 padding: 16px;
-                margin-top: 50px; /* Adjusted for navbar height */
+                margin-top: 50px;
             }
         }
     </style>
 </head>
 <body>
-    <div id="navbar"></div>    
-
+    <div id="navbar"></div>
 
     <div class="content-container">
         <div class="left-container">
