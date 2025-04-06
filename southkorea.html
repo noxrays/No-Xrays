@@ -27,15 +27,126 @@
     </script>
 
     <style>
-         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
 
-        body {
-            font-family: 'Padauk', sans-serif;
+        * {
             margin: 0;
             padding: 0;
         }
-        /* Existing styles from your original code */
 
+        body {
+            font-family: 'Padauk', sans-serif;
+            min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: white;
+            z-index: 1000;
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: black;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav li:first-child {
+            margin-right: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            z-index: 1001;
+        }
+
+        .sidebar li {
+            width: 250px;
+        }
+
+        .sidebar a {
+            width: 250px;
+            overflow: hidden;
+        }
+
+        .menu-button {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .dropdown {
+            height: 100%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Content styles */
         .content-container {
             width: 80%;
             margin: 0 auto;
@@ -69,11 +180,11 @@
         }
 
         .horizontal-image-item {
-            padding-top: 75%; 
+            padding-top: 75%;
         }
 
         .vertical-image-item {
-            padding-top: 133.33%; 
+            padding-top: 133.33%;
         }
 
         .image-item img {
@@ -159,191 +270,51 @@
             right: 10px;
         }
 
-        /* Navbar styles from the provided code */
+        /* Media Queries */
+        @media (max-width: 800px) {
+            .menu-button {
+                display: block;
+                margin-left: 10px;
+                order: 1;
+            }
 
-        * {
-            margin: 0;
-            padding: 0;
+            .title {
+                margin-left: auto;
+                order: 2;
+            }
+
+            ul {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .hideOnMobile {
+                display: none;
+            }
+
+            .horizontal-image-grid {
+                grid-template-columns: repeat(1, 1fr);
+                margin-bottom: 30px;
+            }
+
+            .vertical-image-grid {
+                grid-template-columns: repeat(1, 1fr);
+                margin-top: 15px;
+            }
+
+            /* Disable cursor pointer on mobile to indicate non-interactivity */
+            .image-item img {
+                cursor: default;
+            }
         }
-
-        body {
-            min-height: 100vh;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            font-family: 'Padauk', sans-serif;
-        }
-
-
-
-        nav {
-            background-color: white;
-/*             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
- */            z-index: 1000; /* Ensure navbar is on top */
-
-        }
-
-        nav ul {
-            width: 100%;
-            list-style: none;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav li {
-            height: 50px;
-        }
-
-        nav a {
-            height: 100%;
-            padding: 0 30px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            color: black;
-            
-        }
-
-        nav a:hover {
-            background-color: #f0f0f0;
-        }
-
-        nav li:first-child {
-            margin-right: auto;
-        }
-        
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 250px;
-            background-color: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(12px);
-            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-            list-style: none;
-            display: none;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            z-index: 1001; /* Ensure navbar is on top */
-
-        }
-
-        .sidebar li {
-            width: 250px;
-        }
-
-        .sidebar a {
-            width: 250px;
-            overflow: hidden; /* Prevent overflow */
-        }
-
-        .menu-button {
-            display: none;
-            margin-left: 10px;
-    
-        }
-
-        .dropdown {
-            height: 100%;
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #ddd;
-            color: black;
-        }
-
-        
-
-
-        @media(max-width: 800px) {
-    .menu-button {
-        display: block;
-        margin-left: 10px; /* Adjust to align the hamburger icon to the left */
-        order: 1; /* Ensure the menu button appears first in the flex container */
-    }
-
-    .title {
-        margin-left: auto; /* Moves title to the right */
-        order: 2; /* Ensure the title appears after the menu button */
-    }
-
-    ul {
-        display: flex;
-        justify-content: space-between; /* Ensures space between the menu button and title */
-        align-items: center;
-        width: 100%;
-    }
-
-    .hideOnMobile {
-        display: none;
-    }
-
-    .horizontal-image-grid {
-            grid-template-columns: repeat(1, 1fr);
-            margin-bottom: 30px;
-        }
-
-        .vertical-image-grid {
-            grid-template-columns: repeat(1, 1fr);
-            margin-top: 15px;
-        }
-
-}
-
-/* @media(max-width: 400px) {
-    .sidebar {
-        width: 100%;
-    }
-
-    .content {
-        padding: 16px;
-        margin-top: 50px; /* Adjusted for navbar height
-    }
-}*/
-
     </style>
 </head>
 <body>
-
-        
-    <div id="navbar"></div>    
-
+    <div id="navbar"></div>
 
     <div class="content-container">
-
         <div class="image-grid vertical-image-grid" id="vertical-image-grid">
             <!-- Vertical images will be added here by the script -->
         </div>
@@ -352,14 +323,12 @@
             <!-- Horizontal images will be added here by the script -->
         </div>
 
-
-
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <span class="close-btn" onclick="closeModal()">×</span>
                 <img id="modalImg" src="" alt="Modal Image" onclick="navigateImage(1)">
-                <span class="arrow arrow-left" onclick="navigateImage(-1)">&#10094;</span>
-                <span class="arrow arrow-right" onclick="navigateImage(1)">&#10095;</span>
+                <span class="arrow arrow-left" onclick="navigateImage(-1)">❮</span>
+                <span class="arrow arrow-right" onclick="navigateImage(1)">❯</span>
             </div>
             <div class="dots" id="dots-container"></div>
         </div>
@@ -369,7 +338,7 @@
         function showSidebar() {
             const sidebar = document.querySelector('.sidebar');
             sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
-            sidebar.style.width = '250px'; /* Ensure width remains fixed */
+            sidebar.style.width = '250px';
         }
 
         function hideSidebar() {
@@ -377,97 +346,101 @@
             sidebar.style.display = 'none';
         }
 
-        // Existing scripts from your original code
-
         let currentImageIndex = 0;
         const imageUrls = [
-        'https://www.dropbox.com/scl/fi/2wcu9c0ifn2rlarkz8r5w/1783430747-R1-011-4.jpg?rlkey=2xp78b7ytynjlv5mylx343pqd&st=zfwine4j&raw=1',
-        'https://www.dropbox.com/scl/fi/jwybkvu07acnynjt6tahf/1783430747-R1-015-6.jpg?rlkey=qozaq3ah1cwe949x8s2s8nj3m&st=tta7odri&raw=1',
-        'https://www.dropbox.com/scl/fi/v06m68496tu8gdncxv6ea/1784430748-R1-022-9A.jpg?rlkey=5mazns755nicuz1lic311trjd&st=mads6j82&raw=1',
-        'https://www.dropbox.com/scl/fi/1g99iinercu2d8o3k2hkd/1784430748-R1-040-18A.jpg?rlkey=er9b5gzwe7bencn3ekkic3owr&st=20jnr3u8&raw=1',
-        'https://www.dropbox.com/scl/fi/6p6s7jeh1ee0k7nk8u3qg/1783430747-R1-013-5.jpg?rlkey=lql1tafveeexpm8dxunz8rswx&st=zcqkl4xy&raw=1',
-        'https://www.dropbox.com/scl/fi/zmwlgpjr0fcp0xmxto85k/1783430747-R1-055-26.jpg?rlkey=ar4db5zo574y9nlpm01ml754w&st=dlw6tyy7&raw=1',
-        'https://www.dropbox.com/scl/fi/w163d803emjfgxgfzw1f0/1783430747-R1-021-9.jpg?rlkey=kh3v2bfnsinxnhcr3cr16h6va&st=2wkxq113&raw=1',
-        'https://www.dropbox.com/scl/fi/h8fthfedz1drxonvbkp9m/1784430748-R1-074-35A.jpg?rlkey=ociqks7d194ht7pfwpunleq5j&st=jg7mpdbu&raw=1',
-        'https://www.dropbox.com/scl/fi/oh3agflfmn7vrbczz65cv/1783430747-R1-023-10.jpg?rlkey=9xtbeeq5rwx35vkvso0980eac&st=abaemdfc&raw=1',
-        'https://www.dropbox.com/scl/fi/bl074ffjgv6d7uo6y0l51/1783430747-R1-005-1.jpg?rlkey=i7sjg2m90v9wpb7lg4x7l5izu&st=stdk4cjj&raw=1',
-        'https://www.dropbox.com/scl/fi/urkd392wilft6sh6wgb59/1784430748-R1-024-10A.jpg?rlkey=zu1a45pxk8by21k9fljv21ou6&st=imju259t&raw=1',
-        'https://www.dropbox.com/scl/fi/ck7ijhxwzna69k97pcynx/1784430748-R1-062-29A.jpg?rlkey=7o80bufvet14nl0frawq06g5i&st=jgyc5b7b&raw=1',
-        'https://www.dropbox.com/scl/fi/qcuu7s3sdxvjcn4e3ck6z/1784430748-R1-044-20A.jpg?rlkey=zh2bznphvga5nbm35cmuilmal&st=excue66p&raw=1',
-        'https://www.dropbox.com/scl/fi/ai2kd6ercaynlnek9ycl5/1784430748-R1-072-34A.jpg?rlkey=6juhlzkc9f3v9earunjs4068i&st=fjqusia6&raw=1',
-
+            'https://www.dropbox.com/scl/fi/2wcu9c0ifn2rlarkz8r5w/1783430747-R1-011-4.jpg?rlkey=2xp78b7ytynjlv5mylx343pqd&st=zfwine4j&raw=1',
+            'https://www.dropbox.com/scl/fi/jwybkvu07acnynjt6tahf/1783430747-R1-015-6.jpg?rlkey=qozaq3ah1cwe949x8s2s8nj3m&st=tta7odri&raw=1',
+            'https://www.dropbox.com/scl/fi/v06m68496tu8gdncxv6ea/1784430748-R1-022-9A.jpg?rlkey=5mazns755nicuz1lic311trjd&st=mads6j82&raw=1',
+            'https://www.dropbox.com/scl/fi/1g99iinercu2d8o3k2hkd/1784430748-R1-040-18A.jpg?rlkey=er9b5gzwe7bencn3ekkic3owr&st=20jnr3u8&raw=1',
+            'https://www.dropbox.com/scl/fi/6p6s7jeh1ee0k7nk8u3qg/1783430747-R1-013-5.jpg?rlkey=lql1tafveeexpm8dxunz8rswx&st=zcqkl4xy&raw=1',
+            'https://www.dropbox.com/scl/fi/zmwlgpjr0fcp0xmxto85k/1783430747-R1-055-26.jpg?rlkey=ar4db5zo574y9nlpm01ml754w&st=dlw6tyy7&raw=1',
+            'https://www.dropbox.com/scl/fi/w163d803emjfgxgfzw1f0/1783430747-R1-021-9.jpg?rlkey=kh3v2bfnsinxnhcr3cr16h6va&st=2wkxq113&raw=1',
+            'https://www.dropbox.com/scl/fi/h8fthfedz1drxonvbkp9m/1784430748-R1-074-35A.jpg?rlkey=ociqks7d194ht7pfwpunleq5j&st=jg7mpdbu&raw=1',
+            'https://www.dropbox.com/scl/fi/oh3agflfmn7vrbczz65cv/1783430747-R1-023-10.jpg?rlkey=9xtbeeq5rwx35vkvso0980eac&st=abaemdfc&raw=1',
+            'https://www.dropbox.com/scl/fi/bl074ffjgv6d7uo6y0l51/1783430747-R1-005-1.jpg?rlkey=i7sjg2m90v9wpb7lg4x7l5izu&st=stdk4cjj&raw=1',
+            'https://www.dropbox.com/scl/fi/urkd392wilft6sh6wgb59/1784430748-R1-024-10A.jpg?rlkey=zu1a45pxk8by21k9fljv21ou6&st=imju259t&raw=1',
+            'https://www.dropbox.com/scl/fi/ck7ijhxwzna69k97pcynx/1784430748-R1-062-29A.jpg?rlkey=7o80bufvet14nl0frawq06g5i&st=jgyc5b7b&raw=1',
+            'https://www.dropbox.com/scl/fi/qcuu7s3sdxvjcn4e3ck6z/1784430748-R1-044-20A.jpg?rlkey=zh2bznphvga5nbm35cmuilmal&st=excue66p&raw=1',
+            'https://www.dropbox.com/scl/fi/ai2kd6ercaynlnek9ycl5/1784430748-R1-072-34A.jpg?rlkey=6juhlzkc9f3v9earunjs4068i&st=fjqusia6&raw=1',
         ];
 
         async function checkImageOrientation(url) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = url;
-            img.onload = () => {
-                const isHorizontal = img.naturalWidth >= img.naturalHeight;
-                resolve(isHorizontal);
-            };
-            img.onerror = reject;
-        });
-    }
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = url;
+                img.onload = () => {
+                    const isHorizontal = img.naturalWidth >= img.naturalHeight;
+                    resolve(isHorizontal);
+                };
+                img.onerror = reject;
+            });
+        }
 
-    async function createImageElements() {
-        const horizontalImageGrid = document.getElementById('horizontal-image-grid');
-        const verticalImageGrid = document.getElementById('vertical-image-grid');
-        horizontalImageGrid.innerHTML = '';
-        verticalImageGrid.innerHTML = '';
+        async function createImageElements() {
+            const horizontalImageGrid = document.getElementById('horizontal-image-grid');
+            const verticalImageGrid = document.getElementById('vertical-image-grid');
+            horizontalImageGrid.innerHTML = '';
+            verticalImageGrid.innerHTML = '';
 
-        const fragmentHorizontal = document.createDocumentFragment();
-        const fragmentVertical = document.createDocumentFragment();
+            const fragmentHorizontal = document.createDocumentFragment();
+            const fragmentVertical = document.createDocumentFragment();
 
-        // Check image orientations
-        const orientationChecks = imageUrls.map(url => checkImageOrientation(url));
-        const orientations = await Promise.all(orientationChecks);
+            // Check image orientations
+            const orientationChecks = imageUrls.map(url => checkImageOrientation(url));
+            const orientations = await Promise.all(orientationChecks);
 
-        // Create image elements
-        for (let i = 0; i < imageUrls.length; i++) {
-            const url = imageUrls[i];
-            const isHorizontal = orientations[i];
+            // Check if the device is mobile (screen width <= 800px)
+            const isMobile = window.matchMedia("(max-width: 800px)").matches;
 
-            const div = document.createElement('div');
-            div.className = 'image-item';
-            div.onclick = () => openModal(url);
+            // Create image elements
+            for (let i = 0; i < imageUrls.length; i++) {
+                const url = imageUrls[i];
+                const isHorizontal = orientations[i];
 
-            const img = document.createElement('img');
-            img.src = url;
-            img.alt = `Image ${i + 1}`;
+                const div = document.createElement('div');
+                div.className = 'image-item';
 
-            div.appendChild(img);
+                // Only add the onclick event if not on a mobile device
+                if (!isMobile) {
+                    div.onclick = () => openModal(url);
+                }
 
-            if (isHorizontal) {
-                div.className += ' horizontal-image-item';
-                fragmentHorizontal.appendChild(div);
-            } else {
-                div.className += ' vertical-image-item';
-                fragmentVertical.appendChild(div);
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = `Image ${i + 1}`;
+
+                div.appendChild(img);
+
+                if (isHorizontal) {
+                    div.className += ' horizontal-image-item';
+                    fragmentHorizontal.appendChild(div);
+                } else {
+                    div.className += ' vertical-image-item';
+                    fragmentVertical.appendChild(div);
+                }
+            }
+
+            horizontalImageGrid.appendChild(fragmentHorizontal);
+            verticalImageGrid.appendChild(fragmentVertical);
+
+            // Center the last row if it's not full
+            const horizontalRemainder = orientations.filter(isHorizontal => isHorizontal).length % 2;
+            const verticalRemainder = orientations.filter(isHorizontal => !isHorizontal).length % 3;
+
+            if (horizontalRemainder !== 0) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'image-item';
+                emptyDiv.style.visibility = 'hidden';
+                horizontalImageGrid.appendChild(emptyDiv);
+            }
+
+            if (verticalRemainder !== 0) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'image-item';
+                emptyDiv.style.visibility = 'hidden';
+                verticalImageGrid.appendChild(emptyDiv);
             }
         }
-
-        horizontalImageGrid.appendChild(fragmentHorizontal);
-        verticalImageGrid.appendChild(fragmentVertical);
-
-        // Center the last row if it's not full
-        const horizontalRemainder = orientations.filter(isHorizontal => isHorizontal).length % 2;
-        const verticalRemainder = orientations.filter(isHorizontal => !isHorizontal).length % 3;
-
-        if (horizontalRemainder !== 0) {
-            const emptyDiv = document.createElement('div');
-            emptyDiv.className = 'image-item';
-            emptyDiv.style.visibility = 'hidden';
-            horizontalImageGrid.appendChild(emptyDiv);
-        }
-
-        if (verticalRemainder !== 0) {
-            const emptyDiv = document.createElement('div');
-            emptyDiv.className = 'image-item';
-            emptyDiv.style.visibility = 'hidden';
-            verticalImageGrid.appendChild(emptyDiv);
-        }
-    }
 
         function openModal(imageUrl) {
             const modalImg = document.getElementById('modalImg');
@@ -544,26 +517,25 @@
         }
 
         function adjustImageSize(img) {
-        const maxWidth = window.innerWidth * 0.85; // Increased to 85% of the viewport width
-        const maxHeight = window.innerHeight * 0.85; // Increased to 85% of the viewport height
-        const widthRatio = maxWidth / img.naturalWidth;
-        const heightRatio = maxHeight / img.naturalHeight;
+            const maxWidth = window.innerWidth * 0.85;
+            const maxHeight = window.innerHeight * 0.85;
+            const widthRatio = maxWidth / img.naturalWidth;
+            const heightRatio = maxHeight / img.naturalHeight;
 
-        let scale;
-        const isVertical = img.naturalHeight > img.naturalWidth;
+            let scale;
+            const isVertical = img.naturalHeight > img.naturalWidth;
 
-        if (isVertical) {
-            scale = Math.min(widthRatio, heightRatio ); // Scale vertical images to 55%
-        } else {
-            scale = Math.min(widthRatio, heightRatio);
+            if (isVertical) {
+                scale = Math.min(widthRatio, heightRatio);
+            } else {
+                scale = Math.min(widthRatio, heightRatio);
+            }
+
+            img.style.width = img.naturalWidth * scale + 'px';
+            img.style.height = img.naturalHeight * scale + 'px';
         }
-
-        img.style.width = img.naturalWidth * scale + 'px';
-        img.style.height = img.naturalHeight * scale + 'px';
-    }
 
         createImageElements();
     </script>
-
 </body>
 </html>
