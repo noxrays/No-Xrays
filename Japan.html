@@ -324,7 +324,7 @@
             sidebar.style.display = 'none';
         }
 
-        async function loadExternalHtml() {
+        function loadExternalHtml() {
             fetch('navbar.html')
                 .then(response => {
                     if (!response.ok) {
@@ -338,10 +338,6 @@
                 .catch(error => {
                     console.error('Error fetching the external HTML:', error);
                 });
-
-            document.addEventListener('DOMContentLoaded', function() {
-                loadExternalHtml();
-            });
         }
 
         let currentImageIndex = 0;
@@ -533,8 +529,11 @@
             img.style.height = img.naturalHeight * scale + 'px';
         }
 
-        // Call the function to create the image elements when the script loads
-        createImageElements();
+        // Call the functions to load the navbar and create image elements on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadExternalHtml();
+            createImageElements();
+        });
     </script>
 </body>
 </html>
