@@ -53,7 +53,7 @@
         }
 
         .vertical-image-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             margin-top: 15px;
             margin-bottom: 30px;
         }
@@ -330,9 +330,9 @@
 
     .content {
         padding: 16px;
-        margin-top: 50px; /* Adjusted for navbar height */
+        margin-top: 50px; /* Adjusted for navbar height
     }
-} */
+}*/
 
     </style>
 </head>
@@ -343,13 +343,16 @@
 
 
     <div class="content-container">
-        <div class="image-grid horizontal-image-grid" id="horizontal-image-grid">
-            <!-- Horizontal images will be added here by the script -->
-        </div>
 
         <div class="image-grid vertical-image-grid" id="vertical-image-grid">
             <!-- Vertical images will be added here by the script -->
         </div>
+
+        <div class="image-grid horizontal-image-grid" id="horizontal-image-grid">
+            <!-- Horizontal images will be added here by the script -->
+        </div>
+
+
 
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -378,17 +381,21 @@
 
         let currentImageIndex = 0;
         const imageUrls = [
-        'https://www.dropbox.com/scl/fi/hpjud6gxw5s78xibaq2ax/Europe_35_Edited_noBorder2-000011840025.jpg?rlkey=786sa5cllb2d32p9ykfw7ce0o&st=ec2yy1ek&raw=1',
-        'https://www.dropbox.com/scl/fi/ushp01zu9o1fjuo6trhdl/Europe_35_Edited_noBorder2-000011840003.jpg?rlkey=owbzq6nc53of4hsvslxm6cr7x&st=p1hs718r&raw=1',
-        'https://www.dropbox.com/scl/fi/os0ep492dybfvygo3i3d6/Europe_35_Edited_noBorder2-000011840013.jpg?rlkey=mh5b0beq1vhc9carinxkpm0i5&st=a7fxr747&raw=1',
-        'https://www.dropbox.com/scl/fi/jdm1ebk4g5lh0owaly5k0/Europe_35_Edited_noBorder2-000011840015.jpg?rlkey=f2xsjei735f1grqdvc9d36vs6&st=3jujd8x3&raw=1',
-        'https://www.dropbox.com/scl/fi/6ugcahkz94gkf67m6wm97/Europe_35_Edited_noBorder2-000011830022.jpg?rlkey=uyfk1nfv0fx7g0wjszotvxvfs&st=gopj37el&raw=1',
-        'https://www.dropbox.com/scl/fi/s4lea3mmk47qrtp2luigj/Europe_35_Edited_noBorder2-000011830034.jpg?rlkey=2kri22cpkrrz5nwen7htoipiq&st=9jgvnd5d&raw=1',
-        'https://www.dropbox.com/scl/fi/qqp8y0xzt563md47wteob/Europe_35_Edited_noBorder2-000011840009.jpg?rlkey=qp7kh8qs901fwdc3zuviqqj24&st=gmtqvxqs&raw=1',
-		'https://www.dropbox.com/scl/fi/5n2t82nvhngr1t2z5xiv9/Europe_35_Edited_noBorder2.jpg?rlkey=v7xxq7mf1excfwd7jwfpp2ulm&st=4cf1j43e&raw=1',
-        'https://www.dropbox.com/scl/fi/1phlrq0tiwpr4rujc2d0d/Europe_35_Edited_noBorder2-3.jpg?rlkey=gwhr0fqwaguil4hygfar2v4on&st=xj4kv92p&raw=1',
-        'https://www.dropbox.com/scl/fi/x9jeuh7gqs87gbhh8qt3e/Europe_35_Edited_noBorder2-2.jpg?rlkey=ntaz78t0z9yl0c7qieim50p6f&st=hc580di4&raw=1',
-        'https://www.dropbox.com/scl/fi/2kuzp33zxzwil6p73ia0d/Europe_35_Edited_noBorder2-1.jpg?rlkey=a7ngu7aodlrzw2jmntim8dvvf&st=1de9ufwy&raw=1'
+        'https://www.dropbox.com/scl/fi/2wcu9c0ifn2rlarkz8r5w/1783430747-R1-011-4.jpg?rlkey=2xp78b7ytynjlv5mylx343pqd&st=zfwine4j&raw=1',
+        'https://www.dropbox.com/scl/fi/jwybkvu07acnynjt6tahf/1783430747-R1-015-6.jpg?rlkey=qozaq3ah1cwe949x8s2s8nj3m&st=tta7odri&raw=1',
+        'https://www.dropbox.com/scl/fi/v06m68496tu8gdncxv6ea/1784430748-R1-022-9A.jpg?rlkey=5mazns755nicuz1lic311trjd&st=mads6j82&raw=1',
+        'https://www.dropbox.com/scl/fi/1g99iinercu2d8o3k2hkd/1784430748-R1-040-18A.jpg?rlkey=er9b5gzwe7bencn3ekkic3owr&st=20jnr3u8&raw=1',
+        'https://www.dropbox.com/scl/fi/6p6s7jeh1ee0k7nk8u3qg/1783430747-R1-013-5.jpg?rlkey=lql1tafveeexpm8dxunz8rswx&st=zcqkl4xy&raw=1',
+        'https://www.dropbox.com/scl/fi/zmwlgpjr0fcp0xmxto85k/1783430747-R1-055-26.jpg?rlkey=ar4db5zo574y9nlpm01ml754w&st=dlw6tyy7&raw=1',
+        'https://www.dropbox.com/scl/fi/w163d803emjfgxgfzw1f0/1783430747-R1-021-9.jpg?rlkey=kh3v2bfnsinxnhcr3cr16h6va&st=2wkxq113&raw=1',
+        'https://www.dropbox.com/scl/fi/h8fthfedz1drxonvbkp9m/1784430748-R1-074-35A.jpg?rlkey=ociqks7d194ht7pfwpunleq5j&st=jg7mpdbu&raw=1',
+        'https://www.dropbox.com/scl/fi/oh3agflfmn7vrbczz65cv/1783430747-R1-023-10.jpg?rlkey=9xtbeeq5rwx35vkvso0980eac&st=abaemdfc&raw=1',
+        'https://www.dropbox.com/scl/fi/bl074ffjgv6d7uo6y0l51/1783430747-R1-005-1.jpg?rlkey=i7sjg2m90v9wpb7lg4x7l5izu&st=stdk4cjj&raw=1',
+        'https://www.dropbox.com/scl/fi/urkd392wilft6sh6wgb59/1784430748-R1-024-10A.jpg?rlkey=zu1a45pxk8by21k9fljv21ou6&st=imju259t&raw=1',
+        'https://www.dropbox.com/scl/fi/ck7ijhxwzna69k97pcynx/1784430748-R1-062-29A.jpg?rlkey=7o80bufvet14nl0frawq06g5i&st=jgyc5b7b&raw=1',
+        'https://www.dropbox.com/scl/fi/qcuu7s3sdxvjcn4e3ck6z/1784430748-R1-044-20A.jpg?rlkey=zh2bznphvga5nbm35cmuilmal&st=excue66p&raw=1',
+        'https://www.dropbox.com/scl/fi/ai2kd6ercaynlnek9ycl5/1784430748-R1-072-34A.jpg?rlkey=6juhlzkc9f3v9earunjs4068i&st=fjqusia6&raw=1',
+
         ];
 
         async function checkImageOrientation(url) {
