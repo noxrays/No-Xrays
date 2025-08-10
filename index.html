@@ -8,7 +8,6 @@
     <title>Homepage</title>
 
     <script>
-        // Function to load external HTML content
         function loadExternalHtml() {
             fetch('navbar.html')
                 .then(response => {
@@ -23,25 +22,19 @@
                 .catch(error => {
                     console.error('Error:', error);
                 });
-                
         }
 
         function showSidebar() {
-        document.querySelector('.sidebar').style.display = 'flex'; // Show the sidebar
-    }
+            document.querySelector('.sidebar').style.display = 'flex';
+        }
 
         function hideSidebar() {
-        document.querySelector('.sidebar').style.display = 'none'; // Hide the sidebar
-    }
+            document.querySelector('.sidebar').style.display = 'none';
+        }
 
-        // Call the function to load content before body
         document.addEventListener('DOMContentLoaded', loadExternalHtml);
-
-        
     </script>
 
-
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@700&display=swap');
 
@@ -52,39 +45,37 @@
         }
 
         .content-container {
-            width: 80%;  /* Width scales with viewport width */
-            max-width: 100%;  /* Maximum width capped at 100% of the viewport */
+            width: 80%;
+            max-width: 100%;
             margin: 0 auto;
             padding: 20px 0;
             box-sizing: border-box;
         }
 
-        /* Image link grid */
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(100px, 1fr));  /* Responsive grid */
+            grid-template-columns: repeat(2, minmax(100px, 1fr));
             gap: 15px;
             padding: 20px;
-            max-width: 90vw;  /* Max width limited to viewport */
+            max-width: 90vw;
             margin: auto;
             justify-content: center;
-            box-sizing: border-box;  /* Ensures padding doesn't overflow */
+            box-sizing: border-box;
         }
-
 
         .image-link {
             display: block;
             position: relative;
             width: 100%;
             overflow: hidden;
-            border-radius: 16px; /* Rounded corners */
+            border-radius: 16px;
         }
 
         .image-link img {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 16px; /* Apply rounded corners to the image itself */
+            border-radius: 16px;
         }
 
         .overlay {
@@ -93,14 +84,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 128, 128, 0.7); /* Teal overlay */
-            opacity: 0; /* Hide overlay by default */
-            transition: opacity 0.3s ease; /* Smooth transition */
+            background: rgba(0, 128, 128, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
             z-index: 1;
         }
 
         .image-link:hover .overlay {
-            opacity: 1; /* Show overlay on hover */
+            opacity: 1;
         }
 
         .text-overlay {
@@ -112,80 +103,31 @@
             font-size: 72px;
             color: #ffffff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            z-index: 2; /* Ensure text is on top of overlay */
-            pointer-events: none; /* Ensure text does not interfere with hover */
+            z-index: 2;
+            pointer-events: none;
         }
 
         @media(max-width: 800px) {
-
-     /* Image link grid */
-     .image-grid {
-            display: grid;
-            grid-template-columns: repeat(1, minmax(100%, 1fr)); /* Responsive grid */
-            gap: 15px;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-            justify-content: center;
-
+            .image-grid {
+                grid-template-columns: repeat(1, minmax(100%, 1fr));
+                max-width: 600px;
+            }
         }
-    }
 
         @media(max-width: 1200px) {
-
-        /* Image link grid */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(1, minmax(100%, 1fr)); /* Responsive grid */
-            gap: 15px;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-            justify-content: center;
-            z-index: 01;
-
-   }
-}
+            .image-grid {
+                grid-template-columns: repeat(1, minmax(100%, 1fr));
+                max-width: 600px;
+                z-index: 1;
+            }
+        }
     </style>
-    
 </head>
 
-
 <body>
-
-
     <div id="navbar"></div>
-       
-        
 
-    <!-- Main Content Area -->
     <div class="content-container">
-      <div class="image-grid">
-          <!-- Example Image Link (Add more as needed) -->
-          <a href="https://www.noxrays.pics/Europe" class="image-link">
-              <img src="https://www.dropbox.com/scl/fi/zu7pwaisjnorofbic6wl0/Europe_Button.jpg?rlkey=b2unj4b4rp9b7cjpz63m16k1i&st=nnvwf4yg&raw=1" alt="Europe">
-              <div class="overlay"></div>
-          </a>
-  
-          <a href="https://www.noxrays.pics/Japan" class="image-link">
-              <img src="https://www.dropbox.com/scl/fi/fc1fnp46zvmkspk71556h/Japan.jpg?rlkey=lxe2tpbtj8xv54pwptxunwu4o&st=sdns7131&raw=1" alt="Japan">
-              <div class="overlay"></div>
-          </a>
-  
-          <a href="https://www.noxrays.pics/Experimental" class="image-link">
-              <img src="https://www.dropbox.com/scl/fi/5d97qqph5362eq89x1ozn/Experimental.jpg?rlkey=00je48jjucfz00kr97tjqpib6&st=q5iunqb3&raw=1" alt="Experimental">
-              <div class="overlay"></div>
-          </a>
-
-        
-          <a href="https://www.noxrays.pics/southkorea" class="image-link">
-              <img src="https://www.dropbox.com/scl/fi/szg5bua4puroywh21arf2/SouthKorea_button.jpg?rlkey=pnlha0clcngewst8r6p2r06yf&st=b1j1gztn&raw=1" alt="South Korea">
-              <div class="overlay"></div>
-          </a>
-
-          <!-- Add more image links for "Japan" and "Experimental" as needed -->
-      </div>
-    </div>
-
-</body>
-</html>
+        <div class="image-grid">
+            <a href="/Europe" class="image-link">
+                <img src="https://www.dropbox.com/scl/fi/zu7pwaisjnorofbic6wl0/Europe_Bu_
