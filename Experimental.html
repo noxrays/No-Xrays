@@ -17,6 +17,111 @@
             background-repeat: no-repeat;
             background-position: center;
             font-family: 'Padauk', sans-serif;
+/*             overflow: hidden;
+ */        }
+
+         /* Navbar styles */
+         nav {
+            background-color: white;
+            z-index: 1000;
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: black;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav li:first-child {
+            margin-right: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            z-index: 1001;
+        }
+
+        .sidebar li {
+            width: 250px;
+        }
+
+        .sidebar a {
+            width: 250px;
+            overflow: hidden;
+        }
+
+        .menu-button {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .dropdown {
+            height: 100%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: black;
         }
     </style>
 </head>
@@ -80,20 +185,26 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadExternalHtml();
 
-            loadContent('urban-decay2.html', 'urban-decay')
-                .then(() => {
-                    console.log('Urban Decay content loaded.');
-                    return loadContent('light-leaks.html', 'light-leaks');
-                })
-                .then(() => {
-                    console.log('Light Leaks content loaded.');
-                    return loadContent('film-soup.html', 'film-soup');
-                })
-                .then(() => {
-                    console.log('Film Soup content loaded.');
-                })
-                .catch(error => console.error('Error loading content:', error));
-        });
+            loadContent('urban-decay2.html', 'urban-decay').then(() => {
+                // 'gatherImages()' is called within 'urban-decay2.js' after images are loaded
+                console.log('Urban Decay content loaded.');
+
+                
+                loadContent('light-leaks.html', 'light-leaks').then(() => {
+                // 'gatherImages()' is called within 'urban-decay2.js' after images are loaded
+                console.log('Light Leaks content loaded.');
+            }).then(() => {
+                return loadContent('film-soup.html', 'film-soup');  // Fixed filename typo
+            }).then(() => {
+                // 'gatherImages()' is called within 'film-soup.js' after images are loaded
+                console.log('Film Soup content loaded.');
+            });  // Updated log message to match the file being loaded
+            }).catch(error => {
+                console.error('Error loading content:', error);
+            });
+});
+
     </script>
+
 </body>
 </html>
