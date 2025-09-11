@@ -350,16 +350,16 @@
 
         let currentImageIndex = 0;
         const imageUrls = [
-            'https://www.dropbox.com/scl/fi/9fcj6kjxlhpicdlliz12q/7565434114-R1-024-10A-1.jpg?rlkey=xh2nj4v3tm743zg53epm1vj01&st=x4l9pqi4&raw=1',
-            'https://www.dropbox.com/scl/fi/64lls9hxzuvggvh3a2udb/7565434114-R1-034-15A-1.jpg?rlkey=a19tsvcu9u8z2ytxurx1g2uab&st=sf46rqpf&raw=1',
-            'https://www.dropbox.com/scl/fi/4ezyrl3subxee5q1gyt34/7565434114-R1-068-32A-1.jpg?rlkey=4jorw8nqytwlbgr7hhoirrgvf&st=ua7gc1bw&raw=1',
-            'https://www.dropbox.com/scl/fi/q1pfx080gahuurvnl4199/7565434114-R1-030-13A.jpg?rlkey=e2w9k21moccn5dhxaezok2p98&st=dmian02e&raw=1',
-            'https://www.dropbox.com/scl/fi/iw2is2wgboqbtflr8xjoa/7565434114-R1-050-23A-1.jpg?rlkey=lu7cswq6rhnf445h5hjbxwxnv&st=wpxnwk1r&raw=1',
-            'https://www.dropbox.com/scl/fi/r1fgchvviay7jyz38kdl0/7565434114-R1-036-16A-1.jpg?rlkey=svhowmc359nf1mq7oscaa4ki9&st=212w0mth&raw=1',
-            'https://www.dropbox.com/scl/fi/9dnpv2wslbnytbrflhe4x/7565434114-R1-038-17A-2.jpg?rlkey=ehysbsmmle2qcuq6e0jj1w7nm&st=ycojn2oc&raw=1',
-            'https://www.dropbox.com/scl/fi/qxctyt31mqxsocnh0p2at/7565434114-R1-066-31A-1.jpg?rlkey=y98jjz4j3tky138eerhml1pg4&st=m8kx4ghh&raw=1',
-            'https://www.dropbox.com/scl/fi/3sakrw6hdl8a12iderib1/7565434114-R1-018-7A-1.jpg?rlkey=2xo7i99hlw49qbgb7v42x60v3&st=4u8d4ua2&raw=1',
-        ];
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562040/7565434114-R1-024-10A_1_htqcqu.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562044/7565434114-R1-034-15A_1_neoadi.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562048/7565434114-R1-068-32A_1_bbsg3g.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562046/7565434114-R1-030-13A_hndhtw.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562042/7565434114-R1-050-23A_1_hyt9wv.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562041/7565434114-R1-036-16A_1_d0h518.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562039/7565434114-R1-038-17A_2_orda3e.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757564134/7565434114-R1-066-31A_1_mq2du7.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757562049/7565434114-R1-018-7A_1_wkw46a.jpg',
+];
 
         async function checkImageOrientation(url) {
             return new Promise((resolve, reject) => {
