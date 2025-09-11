@@ -342,21 +342,24 @@
 
         let currentImageIndex = 0;
         const imageUrls = [
-            'https://www.dropbox.com/scl/fi/2mc9jkrtfdwsqixyckbul/Europe_35_Edited_noBorder2-10.jpg?rlkey=z1rtdsq46dspjjqrub27o8fjz&st=cgcs3ccy&raw=1',
-            'https://www.dropbox.com/scl/fi/tqjhgogpfrlirbx48smmk/Europe_35_Edited_noBorder2-3.jpg?rlkey=qs5213bg5s7511w1a3f0ftb44&st=b5n2lgs0&raw=1',
-            'https://www.dropbox.com/scl/fi/0uuy46dth40hsnjmtv89w/Europe_35_Edited_noBorder2-2.jpg?rlkey=50m1vbt5ig3rarmo3uo9nx7qo&st=1rbxctu5&raw=1',
-            'https://www.dropbox.com/scl/fi/t19qyq2fqubhhlkjeocjm/Europe_35_Edited_noBorder2.jpg?rlkey=b35fgoog46uxsa99ovs2tsamv&st=knhzslx9&raw=1',
-            'https://www.dropbox.com/scl/fi/qa17iwjo1ompqdzsqgcag/Europe_35_Edited_noBorder2-6.jpg?rlkey=nyg9egw0r4v86uqdfsprn0vpu&st=zcfi5t7u&raw=1',
-            'https://www.dropbox.com/scl/fi/72tg6trfq4lw1g5gefbcw/Europe_35_Edited_noBorder2-5.jpg?rlkey=cld8jqcy0jikuoxwnehrtd3tg&st=dx8xcd53&raw=1',
-            'https://www.dropbox.com/scl/fi/1uj0ivrbcadyfyexe5bjv/Edited_noBorder2-2.jpg?rlkey=x1f43wpn9bf3nfvovgxchqu13&st=y6lrj5cg&raw=1',
-            'https://www.dropbox.com/scl/fi/6gdadgori6x6gk5yedofp/Japan_2048l_NoBorder-7.jpg?rlkey=np6zc64r9wlrnxgj906pih72u&st=tb5reclh&raw=1',
-            'https://www.dropbox.com/scl/fi/jd9xur6ze4kqb94e2p3b7/Japan_2048l_NoBorder-4.jpg?rlkey=o5owqejiwqeu4ahm37bjmfo7z&st=zn8n1n3t&raw=1',
-            'https://www.dropbox.com/scl/fi/ysc16yhud21aj9gcy4bzl/Japan_2048l_NoBorder-11.jpg?rlkey=5faanukdxg4o154mjldwbeewd&st=lq84iuak&raw=1',
-            'https://www.dropbox.com/scl/fi/7r9m4oe8reu6mu66lzj95/Japan_2048l_NoBorder-5.jpg?rlkey=k1kkmwie9745ods2iwf5nvoma&st=wf9uit0v&raw=1',
-            'https://www.dropbox.com/scl/fi/7y359dkioi75jy7vabdu9/Japan_2048l_NoBorder-3.jpg?rlkey=1a5bmmfkv7uyn2mac2ulcumpr&st=3bi5oo71&raw=1',
-            'https://www.dropbox.com/scl/fi/v8808ql2tr7ndjin2rjvb/Japan_2048l_NoBorder-6.jpg?rlkey=582ivcg2i48dzlolp0mux8l4j&st=u59dh8ix&raw=1',
-            'https://www.dropbox.com/scl/fi/w7r7huva1ial2qllpmqp3/Japan_2048l_NoBorder-9.jpg?rlkey=9u7it8slb33qast7g8otdxv4s&st=jgc3zbwz&raw=1'
-        ];
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560207/Europe_35_Edited_noBorder2-10_ib8ugu.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560206/Europe_35_Edited_noBorder2-3_pfbdlf.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560261/Europe_35_Edited_noBorder2-2_gt6rnm.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560758/Europe_35_Edited_noBorder2_pb5ru9.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560763/Europe_35_Edited_noBorder2-6_exn1dw.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560757/Europe_35_Edited_noBorder2-5_kmqwxl.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560778/Edited_noBorder2--2_kr7yho.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560770/Japan_2048l_NoBorder-7_yuqiie.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560760/Japan_2048l_NoBorder-4_xruttt.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560266/Japan_2048l_NoBorder_vcp1v3.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560761/Japan_2048l_NoBorder-5_g8b37x.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560759/Japan_2048l_NoBorder-3_prmkvi.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560762/Japan_2048l_NoBorder-6_sbptkc.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560774/Japan_2048l_NoBorder-11_zlq0xa.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/f_auto,q_auto/v1757560771/Japan_2048l_NoBorder-9_er6bb9.jpg',
+
+
+    ];
 
         async function checkImageOrientation(url) {
             return new Promise((resolve, reject) => {
