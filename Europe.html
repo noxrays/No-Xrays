@@ -348,17 +348,19 @@
 
         let currentImageIndex = 0;
         const imageUrls = [
-            'https://www.dropbox.com/scl/fi/hpjud6gxw5s78xibaq2ax/Europe_35_Edited_noBorder2-000011840025.jpg?rlkey=786sa5cllb2d32p9ykfw7ce0o&st=ec2yy1ek&raw=1',
-            'https://www.dropbox.com/scl/fi/ushp01zu9o1fjuo6trhdl/Europe_35_Edited_noBorder2-000011840003.jpg?rlkey=owbzq6nc53of4hsvslxm6cr7x&st=p1hs718r&raw=1',
-            'https://www.dropbox.com/scl/fi/os0ep492dybfvygo3i3d6/Europe_35_Edited_noBorder2-000011840013.jpg?rlkey=mh5b0beq1vhc9carinxkpm0i5&st=a7fxr747&raw=1',
-            'https://www.dropbox.com/scl/fi/jdm1ebk4g5lh0owaly5k0/Europe_35_Edited_noBorder2-000011840015.jpg?rlkey=f2xsjei735f1grqdvc9d36vs6&st=3jujd8x3&raw=1',
-            'https://www.dropbox.com/scl/fi/6ugcahkz94gkf67m6wm97/Europe_35_Edited_noBorder2-000011830022.jpg?rlkey=uyfk1nfv0fx7g0wjszotvxvfs&st=gopj37el&raw=1',
-            'https://www.dropbox.com/scl/fi/s4lea3mmk47qrtp2luigj/Europe_35_Edited_noBorder2-000011830034.jpg?rlkey=2kri22cpkrrz5nwen7htoipiq&st=9jgvnd5d&raw=1',
-            'https://www.dropbox.com/scl/fi/qqp8y0xzt563md47wteob/Europe_35_Edited_noBorder2-000011840009.jpg?rlkey=qp7kh8qs901fwdc3zuviqqj24&st=gmtqvxqs&raw=1',
-            'https://www.dropbox.com/scl/fi/5n2t82nvhngr1t2z5xiv9/Europe_35_Edited_noBorder2.jpg?rlkey=v7xxq7mf1excfwd7jwfpp2ulm&st=4cf1j43e&raw=1',
-            'https://www.dropbox.com/scl/fi/1phlrq0tiwpr4rujc2d0d/Europe_35_Edited_noBorder2-3.jpg?rlkey=gwhr0fqwaguil4hygfar2v4on&st=xj4kv92p&raw=1',
-            'https://www.dropbox.com/scl/fi/x9jeuh7gqs87gbhh8qt3e/Europe_35_Edited_noBorder2-2.jpg?rlkey=ntaz78t0z9yl0c7qieim50p6f&st=hc580di4&raw=1',
-            'https://www.dropbox.com/scl/fi/2kuzp33zxzwil6p73ia0d/Europe_35_Edited_noBorder2-1.jpg?rlkey=a7ngu7aodlrzw2jmntim8dvvf&st=1de9ufwy&raw=1'
+        const imageUrls = [
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556847/Europe_35_Edited_noBorder2-000011840025_rdi08e.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556847/Europe_35_Edited_noBorder2_bswgmg.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556846/Europe_35_Edited_noBorder2-000011840015_cwbi5r.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556846/Europe_35_Edited_noBorder2-000011840009_bym333.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556846/Europe_35_Edited_noBorder2-000011840013_suxrd3.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556845/Europe_35_Edited_noBorder2-000011840003_cx510g.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556844/Europe_35_Edited_noBorder2-000011830034_sfwj77.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556844/Europe_35_Edited_noBorder2-000011830022_dowt0v.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556844/Europe_35_Edited_noBorder2-3_uesium.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556843/Europe_35_Edited_noBorder2-2_podq4a.jpg',
+            'https://res.cloudinary.com/dghco8e5t/image/upload/v1757556843/Europe_35_Edited_noBorder2-1_a0w6kv.jpg',
+        ];  
         ];
 
         async function checkImageOrientation(url) {
